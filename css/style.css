@@ -385,75 +385,6 @@ header .logo img {
     color: var(--heading-color);
 }
 
-/* ------------------------------------------------------------------ */
-/* 8. Pricing Section
-/* ------------------------------------------------------------------ */
-.pricing-section {
-    background-color: var(--light-bg);
-}
-.pricing-section .container {
-    text-align: center;
-}
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-.pricing-item {
-    background: var(--white);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    padding: 40px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.pricing-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
-}
-.pricing-item h4 {
-    font-family: var(--font-primary);
-    font-size: 1.4rem;
-    color: var(--heading-color);
-    margin-bottom: 15px;
-}
-.pricing-item .price {
-    font-size: 2.5rem;
-    font-family: var(--font-primary);
-    margin: 15px 0;
-    color: var(--primary-color);
-    font-weight: 700;
-}
-.pricing-item ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    flex-grow: 1;
-}
-.pricing-item ul li {
-    padding-left: 25px;
-    position: relative;
-    text-align: left;
-    margin-bottom: 10px;
-}
-.pricing-item ul li::before {
-    content: '\f00c';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    color: var(--primary-color);
-    position: absolute;
-    left: 0;
-    top: 2px;
-}
-.pricing-item .price-action {
-    margin-bottom: 20px;
-}
-.pricing-item .price-action .btn {
-    width: 100%;
-}
 
 /* ------------------------------------------------------------------ */
 /* 9. Testimonials & Blog
@@ -663,7 +594,7 @@ header .logo img {
 /* 4. About & Why Us
 /* ------------------------------------------------------------------ */
 
-.about-section, .why-us-section, .services-detailed-section, .pricing-section {
+.about-section, .why-us-section, .services-detailed-section {
     padding: 80px 0;
 }
 
@@ -794,21 +725,8 @@ header .logo img {
     margin-bottom: 20px;
 }
 
-.pricing-item .price-action {
-    margin-bottom: 20px;
 }
 
-.pricing-item .price-action .btn {
-    width: 100%;
-}
-
-/* ------------------------------------------------------------------ */
-/* 6. Pricing Section
-/* ------------------------------------------------------------------ */
-
-.pricing-section {
-    /* ... existing code ... */
-}
 
 @media (max-width: 768px) {
     .nav-links {
@@ -835,180 +753,6 @@ header .logo img {
     }
 }
 
-/* ------------------------------------------------------------------ */
-/* 7. Pricing Table Page
-/* ------------------------------------------------------------------ */
-.pricing-table-section {
-    padding: 80px 0;
-    background-color: var(--white);
-}
-
-.pricing-table-section .container {
-    max-width: 900px;
-    text-align: center;
-}
-
-.page-description {
-    max-width: 700px;
-    margin: 0 auto 40px auto;
-    color: var(--text-color);
-}
-
-.pricing-table-detailed {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-}
-
-.pricing-table-detailed th, .pricing-table-detailed td {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.pricing-table-detailed thead {
-    background-color: var(--dark-bg);
-    color: var(--white);
-    font-family: var(--font-primary);
-    font-size: 1.1rem;
-}
-
-.price-row-clickable {
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.price-row-clickable:hover {
-    background-color: var(--light-bg);
-}
-
-.price-row-clickable.active {
-    background-color: var(--secondary-color);
-    color: var(--white);
-}
-
-.price-row-clickable.active .price .btn-inline {
-    background-color: var(--white);
-    color: var(--primary-color);
-}
-
-.price-row-details {
-    display: none;
-}
-
-.price-row-details td {
-    background-color: #fafafa;
-    padding: 30px;
-    color: var(--text-color);
-}
-
-.pricing-table-detailed .price {
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.btn-inline {
-    text-decoration: none;
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 5px 15px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-inline:hover {
-    background-color: var(--heading-color);
-}
-
-/* ------------------------------------------------------------------ */
-/* 8. Blog Section
-/* ------------------------------------------------------------------ */
-
-.blog-section {
-    padding: 80px 0;
-    /* ... existing code ... */
-    object-fit: cover;
-}
-
-.blog-post h4 {
-    font-family: var(--font-primary);
-    font-size: 1.2rem;
-    color: var(--heading-color);
-    margin: 20px 20px 10px 20px;
-}
-
-.blog-post p {
-    padding: 0 20px 20px 20px;
-}
-
-/* ------------------------------------------------------------------ */
-/* 9. Contact Section
-/* ------------------------------------------------------------------ */
-
-.contact-section {
-    padding: 80px 0;
-    /* ... existing code ... */
-    font-size: 1rem;
-}
-
-/* ------------------------------------------------------------------ */
-/* 10. Footer
-/* ------------------------------------------------------------------ */
-
-footer {
-    position: absolute;
-    /* ... existing code ... */
-    color: var(--primary-color);
-}
-
-/* ------------------------------------------------------------------ */
-/* 11. Responsive
-/* ------------------------------------------------------------------ */
-
-@media (max-width: 992px) {
-    .about-section .container {
-        /* ... existing code ... */
-        .footer-top {
-            grid-template-columns: 1fr;
-        }
-    }
-}
-
-.social-links a:hover i {
-    color: #fff;
-    transform: scale(1.1);
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 20px 0;
-    text-align: center;
-    font-size: 0.9em;
-}
-
-.serial-number {
-    font-size: 0.8em;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 15px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-/* -------------------------
-   Fiyatlar Sayfası Stilleri
-   ------------------------- */
-
-.header-static {
-    position: static;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.header-static .nav-links a {
-    color: #333;
 }
 
 .header-static .nav-links a:hover,
@@ -1035,116 +779,6 @@ footer {
     opacity: 0.9;
 }
 
-.pricing-cards-section {
-    padding: 80px 0;
-    background-color: #f9f9f9;
-}
-
-.pricing-cards-section .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-}
-
-.pricing-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.07);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-}
-
-.pricing-card-header {
-    background-color: #c5a47e;
-    color: #fff;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.pricing-card-header i {
-    font-size: 1.8em;
-}
-
-.pricing-card-header h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5em;
-    margin: 0;
-}
-
-.pricing-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex-grow: 1;
-}
-
-.pricing-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 25px;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 1em;
-}
-
-.pricing-list li:last-child {
-    border-bottom: none;
-}
-
-.pricing-list li span:first-child {
-    color: #555;
-    font-weight: 700;
-}
-
-.price-tag {
-    font-weight: 700;
-    color: #333;
-    background-color: #f0f0f0;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.9em;
-}
-
-.price-tag.call-to-action {
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.price-tag.call-to-action:hover {
-    background-color: #45a049;
-}
-
-.pricing-footer-note {
-    max-width: 800px;
-    margin: 60px auto 0;
-    padding: 20px;
-    background-color: #eaf3ff;
-    border-left: 5px solid #4a90e2;
-    text-align: center;
-    border-radius: 0 8px 8px 0;
-}
-
-.pricing-footer-note p {
-    margin: 0 0 20px;
-    line-height: 1.6;
-    color: #333;
-}
-
-.pricing-footer-note i {
-    margin-right: 10px;
-    color: #4a90e2;
-}
 
 /* -------------------------
    Responsive Stiller
@@ -1229,9 +863,6 @@ footer {
         font-size: 2em;
     }
 
-    .pricing-cards-section .container {
-        grid-template-columns: 1fr; /* Mobilde kartları alt alta sırala */
-    }
     
     .page-banner h1 {
         font-size: 2.2em;
