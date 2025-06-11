@@ -28,26 +28,29 @@ html {
 }
 
 body {
-    font-family: var(--font-secondary);
-    color: var(--text-color);
-    background-color: var(--white);
-    line-height: 1.7;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: #555;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
 }
 
 #page-container {
     position: relative;
     min-height: 100vh;
+    overflow-x: hidden; /* Yatay kaydırmayı engelle */
 }
 
 #content-wrap {
-    padding-bottom: 300px; /* Footer yüksekliği + ekstra boşluk */
+    padding-bottom: 250px; /* Footer yüksekliği kadar boşluk */
 }
 
 .container {
-    width: 100%;
-    max-width: 1140px;
+    width: 90%;
+    max-width: 1200px; /* Geniş ekranlarda içeriği sınırlar */
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1146,4 +1149,95 @@ footer {
 /* -------------------------
    Responsive Stiller
    ------------------------- */
-/* ... existing code ... */ 
+
+@media (max-width: 992px) {
+    .hero-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin-bottom: 40px;
+    }
+
+    .about-section .container {
+        flex-direction: column-reverse;
+    }
+
+    .about-section .image-content {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobil Navigasyon */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 280px;
+        background-color: #fff;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: 80px;
+        padding-left: 30px;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        width: 100%;
+        margin: 0;
+        padding: 15px 0;
+    }
+
+    .nav-links a {
+        color: #333 !important; /* Önemli! Statik header'ı ezer */
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .hamburger {
+        display: block; /* Mobilde görünür yap */
+    }
+
+    /* Genel Bölüm Boşlukları */
+    section {
+        padding: 60px 0;
+    }
+
+    .floating-services .container,
+    .why-us-section .container,
+    .footer-top {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .text-content h2 {
+        font-size: 2em;
+    }
+
+    .pricing-cards-section .container {
+        grid-template-columns: 1fr; /* Mobilde kartları alt alta sırala */
+    }
+    
+    .page-banner h1 {
+        font-size: 2.2em;
+    }
+    
+    #content-wrap {
+        padding-bottom: 500px; /* Mobil footer için daha fazla boşluk */
+    }
+} 
