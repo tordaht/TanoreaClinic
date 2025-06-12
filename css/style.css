@@ -199,23 +199,52 @@ header .logo img {
 /* ------------------------------------------------------------------ */
 /* 3. Hero Section
 /* ------------------------------------------------------------------ */
+
 .hero-section {
-    padding: 50px 0;
-    text-align: left;
-    background-color: var(--light-bg);
-    display: flex;
-    align-items: center;
-    min-height: calc(90vh - 100px);
+    position: relative;
+    padding: 0;
+    min-height: calc(100vh - 100px);
+    overflow: hidden;
+    background-color: var(--white);
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
 }
 
 .hero-section > .container {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 60px;
+    justify-content: center;
+    text-align: center;
+    min-height: inherit;
+    z-index: 1;
+    width: 100%;
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.hero-content, .hero-image {
-    flex: 1;
+.hero-content {
+    color: var(--white);
+    max-width: 700px;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero-content h1 {
@@ -233,11 +262,6 @@ header .logo img {
     margin-right: 10px;
 }
 
-.hero-image img {
-    width: 100%;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-}
 
 /* ------------------------------------------------------------------ */
 /* 4. Floating Services
@@ -428,28 +452,33 @@ header .logo img {
     text-align: left;
 }
 .blog-post {
-    border: 1px solid #eee;
-    border-radius: 10px;
+    background-color: var(--white);
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 .blog-post:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
 }
 .blog-post img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
 }
 .blog-post h4 {
     font-family: var(--font-primary);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: var(--heading-color);
     margin: 20px 20px 10px 20px;
 }
 .blog-post p {
     padding: 0 20px 20px 20px;
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 /* ------------------------------------------------------------------ */
@@ -538,7 +567,7 @@ header .logo img {
     }
 
     .hero-section > .container {
-        flex-direction: column-reverse;
+        padding-top: 80px;
         text-align: center;
     }
 
@@ -578,7 +607,7 @@ header .logo img {
     }
 
     .hero-section > .container {
-        padding-top: 50px;
+        padding-top: 100px;
     }
 
     .hero-content h1 {
@@ -786,7 +815,7 @@ header .logo img {
 
 @media (max-width: 992px) {
     .hero-section .container {
-        flex-direction: column;
+        padding-top: 80px;
         text-align: center;
     }
 
@@ -871,4 +900,82 @@ header .logo img {
     #content-wrap {
         padding-bottom: 500px; /* Mobil footer için daha fazla boşluk */
     }
-} 
+}
+
+/* ------------------------------------------------------------------ */
+/* Admin Page */
+/* ------------------------------------------------------------------ */
+.admin-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.login-container label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+.login-container button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.admin-section {
+    margin-bottom: 40px;
+}
+
+.admin-section h2 {
+    margin-bottom: 20px;
+}
+
+.admin-section label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+.admin-section input,
+.admin-section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+.admin-section textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.post-item {
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.post-item button {
+    margin-top: 10px;
+}
