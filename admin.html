@@ -11,21 +11,27 @@
         <h1>Yönetim Paneli</h1>
         <section class="admin-section">
             <h2>Ana Sayfa Hero</h2>
-            <form id="heroForm">
+            <form id="heroForm" class="drop-form">
                 <label>Başlık<input type="text" name="title"></label>
                 <label>Açıklama<textarea name="text"></textarea></label>
                 <label>Görsel URL<input type="text" name="image"></label>
+                <div class="dropzone" data-target="heroImage">Görseli buraya sürükleyin veya tıklayın
+                    <input type="file" accept="image/*" class="d-none" name="heroFile">
+                </div>
             </form>
         </section>
         <section class="admin-section">
             <h2>Hakkımızda</h2>
-            <form id="aboutForm">
+            <form id="aboutForm" class="drop-form">
                 <label>Alt Başlık<input type="text" name="subtitle"></label>
                 <label>Başlık<input type="text" name="title"></label>
                 <label>Metin 1<textarea name="text1"></textarea></label>
                 <label>Metin 2<textarea name="text2"></textarea></label>
                 <label>Metin 3<textarea name="text3"></textarea></label>
                 <label>Görsel URL<input type="text" name="image"></label>
+                <div class="dropzone" data-target="aboutImage">Görseli buraya sürükleyin veya tıklayın
+                    <input type="file" accept="image/*" class="d-none" name="aboutFile">
+                </div>
             </form>
         </section>
         <section class="admin-section">
