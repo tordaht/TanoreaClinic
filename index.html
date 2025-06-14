@@ -13,27 +13,23 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Tanorea Clinic</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <nav class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link" href="#home">Anasayfa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Hakkımızda</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hizmetler</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#services-showcase">Medikal Cilt Bakımı</a></li>
-                            <li><a class="dropdown-item" href="#services-showcase">Medikal Estetik Uygulamalar</a></li>
-                            <li><a class="dropdown-item" href="#services-showcase">Saç ve Saçlı Deri Tedavileri</a></li>
-                            <li><a class="dropdown-item" href="#services-showcase">İğneli Epilasyon</a></li>
-                            <li><a class="dropdown-item" href="#services-showcase">Q-Switch Lazer</a></li>
-                            <li><a class="dropdown-item" href="#services-showcase">Bölgesel İncelme</a></li>
-                            <li><a class="dropdown-item" href="#services-showcase">I.V. İnfüzyon Terapileri</a></li>
-                            <li><a class="dropdown-item" href="#services-showcase">Kalıcı Makyaj</a></li>
+
+    <div id="page-container">
+        <div id="content-wrap">
+            <!-- Header -->
+            <header id="anasayfa">
+                <div class="container">
+                    <nav>
+                        <a href="#anasayfa" class="logo">
+                            <img src="./images/tanorea-clinic-logo.png" alt="Tanorea Clinic Logo">
+                        </a>
+                        <ul class="nav-links">
+                            <li><a href="#anasayfa">Ana Sayfa</a></li>
+                            <li><a href="#hakkimizda">Hakkımızda</a></li>
+                            <li><a href="#hizmetler">Hizmetler</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="#iletisim">İletişim</a></li>
+
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#contact">İletişim</a></li>
@@ -236,13 +232,46 @@
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Gönder</button>
                     </div>
-                </form>
+                    <div class="footer-links">
+                        <h5>Hızlı Erişim</h5>
+                        <ul>
+                            <li><a href="#hakkimizda">Hakkımızda</a></li>
+                            <li><a href="#hizmetler">Hizmetler</a></li>
+                            <li><a href="#iletisim">İletişim</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>İletişime Geçin</h4>
+                        <ul class="footer-links">
+                            <li><a href="mailto:tanorea@tanorea.com.tr">tanorea@tanorea.com.tr</a></li>
+                            <li><a href="tel:+905466716348">+90 546 671 63 48</a></li>
+                            <li><a href="https://www.google.com/maps/search/?api=1&query=Tanorea+Clinic+-+G%C3%BCzellik+Merkezi+Merkez+mahallesi+vefa+sokak+no:32+Çekmeköy+İSTANBUL" target="_blank" rel="noopener noreferrer">Tanorea Clinic - Güzellik Merkezi<br>Merkez mahallesi vefa sokak no:32 Çekmeköy / İSTANBUL</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-newsletter">
+                        <h5>Güncel Kalın</h5>
+                        <p>Kampanya ve indirimlerden haberdar olmak için bültenimize kaydolun.</p>
+                        <form>
+                            <input type="email" placeholder="E-posta adresiniz">
+                            <button type="submit">Gönder</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Tanorea Clinic. Tüm hakları saklıdır. <a href="admin.html" class="footer-admin-link">Admin</a></p>
+                    <div class="social-icons">
+                       <a href="https://www.instagram.com/tanoreaclinic" target="_blank"><i class="fab fa-instagram"></i></a>
+                       <a href="https://www.facebook.com/share/1Dm3d8h6rq/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                       <a href="https://www.tiktok.com/@tanoreaclinic" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQTaOitYapNW+ODiOA+Nh0CvZkdKtEtGlUZEM6I4vJ+mLjXmJvLCYOtJk9g6G5Ge" crossorigin="anonymous"></script>
-    <script src="js/cms.js"></script>
-    <script src="js/script.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/cms.js"></script>
+
 </body>
 </html>

@@ -53,11 +53,80 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--neutral-white);
 }
 
+/* ------------------------------------------------------------------ */
+/* 3. Hero Section
+/* ------------------------------------------------------------------ */
+
 .hero-section {
-    background-image: url('https://source.unsplash.com/1600x900/?luxury,clinic,interior,beige');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
+    position: relative;
+    padding: 0;
+    min-height: calc(100vh - 100px);
+    overflow: hidden;
+    background-color: var(--white);
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+.hero-section > .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: inherit;
+    z-index: 1;
+    width: 100%;
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.hero-content {
+    color: var(--white);
+    max-width: 700px;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.hero-content .btn {
+    margin-right: 10px;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* 4. Floating Services
+/* ------------------------------------------------------------------ */
+.floating-services {
+    padding: 0;
+    margin-top: -80px; /* Hero section üzerine taşı */
+
     position: relative;
     display: flex;
     align-items: center;
@@ -81,9 +150,195 @@ h1, h2, h3, h4, h5, h6 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.blog-section {
+    padding: 80px 0;
+    background-color: var(--white);
+    padding-bottom: 120px;
+}
+.blog-section .container {
+    text-align: center;
+}
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    text-align: left;
+}
+.blog-post {
+    background-color: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.blog-post:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+.blog-post img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.blog-post h4 {
+    font-family: var(--font-primary);
+    font-size: 1.4rem;
+    color: var(--heading-color);
+    margin: 20px 20px 10px 20px;
+}
+.blog-post p {
+    padding: 0 20px 20px 20px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ------------------------------------------------------------------ */
+/* 10. Footer
+/* ------------------------------------------------------------------ */
+.footer {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding: 50px 0 20px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.footer .logo {
+    color: var(--white);
+}
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 50px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+.footer h5 {
+    color: var(--white);
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+}
+.footer ul {
+    list-style: none;
+}
+.footer a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer a:hover {
+    color: var(--white);
+}
+.footer-newsletter input {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+.footer-newsletter button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+.footer-bottom p {
+    margin: 0;
+}
+.footer-bottom .social-icons a {
+    color: var(--white);
+    font-size: 1.2rem;
+    margin-left: 15px;
+}
+.serial-number {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* ------------------------------------------------------------------ */
+/* 11. Responsive
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 992px) {
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-section > .container {
+        padding-top: 80px;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .about-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--white);
+        width: 100%;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hero-section > .container {
+        padding-top: 100px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ------------------------------------------------------------------ */
+/* 4. About & Why Us
+/* ------------------------------------------------------------------ */
+
+.about-section, .why-us-section, .services-detailed-section {
+    padding: 80px 0;
 }
 
 .feature-box {
@@ -111,3 +366,181 @@ h1, h2, h3, h4, h5, h6 {
 .dropdown-menu {
     border-radius: 0;
 }
+
+.page-banner p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+
+/* -------------------------
+   Responsive Stiller
+   ------------------------- */
+
+@media (max-width: 992px) {
+    .hero-section .container {
+        padding-top: 80px;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin-bottom: 40px;
+    }
+
+    .about-section .container {
+        flex-direction: column-reverse;
+    }
+
+    .about-section .image-content {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobil Navigasyon */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 280px;
+        background-color: #fff;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: 80px;
+        padding-left: 30px;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        width: 100%;
+        margin: 0;
+        padding: 15px 0;
+    }
+
+    .nav-links a {
+        color: #333 !important; /* Önemli! Statik header'ı ezer */
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .hamburger {
+        display: block; /* Mobilde görünür yap */
+    }
+
+    /* Genel Bölüm Boşlukları */
+    section {
+        padding: 60px 0;
+    }
+
+    .floating-services .container,
+    .why-us-section .container,
+    .footer-top {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .text-content h2 {
+        font-size: 2em;
+    }
+
+    
+    .page-banner h1 {
+        font-size: 2.2em;
+    }
+    
+    #content-wrap {
+        padding-bottom: 500px; /* Mobil footer için daha fazla boşluk */
+    }
+}
+
+/* ------------------------------------------------------------------ */
+/* Admin Page */
+/* ------------------------------------------------------------------ */
+.admin-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.login-container label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+.login-container button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.admin-section {
+    margin-bottom: 40px;
+}
+
+.admin-section h2 {
+    margin-bottom: 20px;
+}
+
+.admin-section label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+.admin-section input,
+.admin-section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+.admin-section textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.post-item {
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.post-item button {
+    margin-top: 10px;
+}
+

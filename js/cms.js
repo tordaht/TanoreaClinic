@@ -3,22 +3,28 @@
     document.addEventListener('DOMContentLoaded', function() {
         const heroData = JSON.parse(localStorage.getItem('heroData'));
         if (heroData) {
-            const h1 = document.querySelector('#home h1');
-            const p = document.querySelector('#home h2');
-            const section = document.querySelector('#home');
+            const h1 = document.querySelector('.hero-content h1');
+            const p = document.querySelector('.hero-content p');
+            const img = document.querySelector('.hero-image img');
             if (h1) h1.textContent = heroData.title;
             if (p) p.textContent = heroData.text;
-            if (section) section.style.backgroundImage = `url('${heroData.image}')`;
+            if (img) img.src = heroData.image;
+
         }
 
         const aboutData = JSON.parse(localStorage.getItem('aboutData'));
         if (aboutData) {
-            const img = document.querySelector('#about img');
-            const title = document.querySelector('#about h2');
-            const pEls = document.querySelectorAll('#about p');
+            const img = document.querySelector('#hakkimizda .image-content img');
+            const subtitle = document.querySelector('#hakkimizda .text-content .subtitle');
+            const title = document.querySelector('#hakkimizda .text-content h2');
+            const ps = document.querySelectorAll('#hakkimizda .text-content p');
             if (img) img.src = aboutData.image;
+            if (subtitle) subtitle.textContent = aboutData.subtitle;
             if (title) title.textContent = aboutData.title;
-            if (pEls[0]) pEls[0].textContent = aboutData.text1 || aboutData.text;
+            ps.forEach((el, idx) => {
+                if (aboutData['text' + (idx + 1)]) el.textContent = aboutData['text' + (idx + 1)];
+            });
+
         }
 
         const posts = JSON.parse(localStorage.getItem('blogPosts'));
