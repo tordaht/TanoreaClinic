@@ -28,16 +28,19 @@
     const loginContainer = document.getElementById('loginContainer');
     const adminContainer = document.getElementById('adminContainer');
 
+
     const heroForm = document.getElementById('heroForm');
     const aboutForm = document.getElementById('aboutForm');
     const postsContainer = document.getElementById('postsContainer');
     const addPostBtn = document.getElementById('addPost');
     const saveBtn = document.getElementById('saveAll');
 
+
     function fillForms() {
         heroForm.title.value = heroData.title;
         heroForm.text.value = heroData.text;
         heroForm.image.value = heroData.image;
+
 
         aboutForm.subtitle.value = aboutData.subtitle;
         aboutForm.title.value = aboutData.title;
@@ -45,6 +48,7 @@
         aboutForm.text2.value = aboutData.text2;
         aboutForm.text3.value = aboutData.text3;
         aboutForm.image.value = aboutData.image;
+
 
         renderPosts();
     }
@@ -57,6 +61,7 @@
             div.innerHTML = `
                 <label>Başlık <input type="text" class="post-title" data-idx="${idx}" value="${post.title}"></label>
                 <label>Görsel URL <input type="text" class="post-image" data-idx="${idx}" value="${post.image}"></label>
+
                 <label>Metin <textarea class="post-text" data-idx="${idx}">${post.text}</textarea></label>
                 <button type="button" class="remove" data-idx="${idx}">Sil</button>
             `;
@@ -84,12 +89,14 @@
         if (e.target.classList.contains('post-text')) blogPosts[idx].text = e.target.value;
     });
 
+
     saveBtn.addEventListener('click', function() {
         const newHero = {
             title: heroForm.title.value,
             text: heroForm.text.value,
             image: heroForm.image.value
         };
+
         const newAbout = {
             subtitle: aboutForm.subtitle.value,
             title: aboutForm.title.value,
@@ -98,6 +105,7 @@
             text3: aboutForm.text3.value,
             image: aboutForm.image.value
         };
+
         localStorage.setItem('heroData', JSON.stringify(newHero));
         localStorage.setItem('aboutData', JSON.stringify(newAbout));
         localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
@@ -114,4 +122,5 @@
             alert('Hatalı giriş');
         }
     });
+
 })();

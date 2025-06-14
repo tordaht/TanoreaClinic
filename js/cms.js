@@ -9,6 +9,7 @@
             if (h1) h1.textContent = heroData.title;
             if (p) p.textContent = heroData.text;
             if (img) img.src = heroData.image;
+
         }
 
         const aboutData = JSON.parse(localStorage.getItem('aboutData'));
@@ -23,6 +24,7 @@
             ps.forEach((el, idx) => {
                 if (aboutData['text' + (idx + 1)]) el.textContent = aboutData['text' + (idx + 1)];
             });
+
         }
 
         const posts = JSON.parse(localStorage.getItem('blogPosts'));
