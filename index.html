@@ -1,277 +1,2866 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tanorea Clinic | Medikal Estetik ve Güzellik Merkezi - Çekmeköy, İstanbul</title>
-    <meta name="description" content="Tanorea Clinic, İstanbul Çekmeköy'de medikal estetik, cilt bakımı, lazer epilasyon ve güzellik uygulamaları sunan uzman bir merkezdir. Doğal ve sağlıklı güzellik için bize ulaşın.">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-    <div id="page-container">
-        <div id="content-wrap">
-            <!-- Header -->
-            <header id="anasayfa">
-                <div class="container">
-                    <nav>
-                        <a href="#anasayfa" class="logo">
-                            <img src="./images/tanorea-clinic-logo.png" alt="Tanorea Clinic Logo">
-                        </a>
-                        <ul class="nav-links">
-                            <li><a href="#anasayfa">Ana Sayfa</a></li>
-                            <li><a href="#hakkimizda">Hakkımızda</a></li>
-                            <li><a href="#hizmetler">Hizmetler</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="#iletisim">İletişim</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">İletişim</a></li>
-                    <li class="nav-item ms-lg-3"><a href="#" class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#appointmentModal">Randevu Al</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="home" class="d-flex align-items-center text-center text-white hero-section">
-            <div class="hero-overlay"></div>
-            <div class="container position-relative">
-                <h1 class="display-5 fw-bold mb-3">Tanorea ile Aynadaki Sen Daha Güçlü!</h1>
-                <h2 class="h5 mb-4">Doğallıktan ödün vermeden, seni en iyi yansıtan haline ulaşman için buradayız.</h2>
-                <a href="#services-showcase" class="btn btn-primary btn-lg me-2">Hizmetleri Keşfet</a>
-                <a href="#" class="btn btn-accent btn-lg" data-bs-toggle="modal" data-bs-target="#appointmentModal">Randevu Al</a>
-            </div>
-        </section>
-
-        <section id="services-showcase" class="py-5 bg-light text-center">
-            <div class="container">
-                <h2 class="mb-4">Öne Çıkan Hizmetler</h2>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card h-100 shadow-sm service-card">
-                                <div class="card-body">
-                                    <i class="fa-solid fa-syringe fa-2x mb-3"></i>
-                                    <h5 class="card-title">Medikal Estetik Uygulamalar</h5>
-                                    <p class="card-text">Cerrahi olmayan gençleşme ve yüz hatlarında denge.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card h-100 shadow-sm service-card">
-                                <div class="card-body">
-                                    <i class="fa-solid fa-spa fa-2x mb-3"></i>
-                                    <h5 class="card-title">Medikal Cilt Bakımı</h5>
-                                    <p class="card-text">Cildinize özel profesyonel bakım protokolleri.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card h-100 shadow-sm service-card">
-                                <div class="card-body">
-                                    <span class="fa-stack fa-2x mb-3">
-                                        <i class="fa-regular fa-circle fa-stack-2x"></i>
-                                        <strong class="fa-stack-1x">Q</strong>
-                                    </span>
-                                    <h5 class="card-title">Q-Switch Lazer</h5>
-                                    <p class="card-text">Leke ve dövme silme işlemlerinde etkili çözümler.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card h-100 shadow-sm service-card">
-                                <div class="card-body">
-                                    <i class="fa-solid fa-ruler-combined fa-2x mb-3"></i>
-                                    <h5 class="card-title">Bölgesel İncelme</h5>
-                                    <p class="card-text">Vücut hatlarını şekillendiren yenilikçi uygulamalar.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="py-5">
-            <div class="container">
-                <div class="row align-items-center g-4">
-                    <div class="col-lg-6">
-                        <img src="https://source.unsplash.com/800x600/?clinic,team" class="img-fluid rounded" alt="Tanorea Clinic">
-                    </div>
-                    <div class="col-lg-6">
-                        <h2 class="mb-3">Tanorea Clinic Güzellik Merkezi</h2>
-                        <p>Tanorea, 2025 yılında İstanbul Çekmeköy’de kurulmuş; medikal estetik, cilt ve saç tedavileri gibi alanlarda hizmet veren, uzman kadrosuyla fark yaratan bir medikal güzellik merkezidir.</p>
-                        <a href="#" class="btn btn-accent">Devamını Oku</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-5 bg-light" id="philosophy">
-            <div class="container text-center">
-                <h2 class="mb-4">Neden Tanorea?</h2>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="feature-box p-4 h-100 shadow-sm">
-                            <i class="fa-solid fa-user-check fa-2x mb-3"></i>
-                            <h5>Kişiye Özel Planlama</h5>
-                            <p>Her danışanımıza özel programlar oluşturarak en etkili sonucu hedefliyoruz.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="feature-box p-4 h-100 shadow-sm">
-                            <i class="fa-solid fa-user-md fa-2x mb-3"></i>
-                            <h5>Uzman Kadro ve Etik</h5>
-                            <p>Deneyimli uzmanlarımız etik ilkelere bağlı kalarak hizmet verir.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="feature-box p-4 h-100 shadow-sm">
-                            <i class="fa-solid fa-microchip fa-2x mb-3"></i>
-                            <h5>Son Teknoloji Cihazlar</h5>
-                            <p>Gelişmiş cihazlarımızla güvenilir ve etkili uygulamalar sunarız.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="feature-box p-4 h-100 shadow-sm">
-                            <i class="fa-solid fa-leaf fa-2x mb-3"></i>
-                            <h5>Doğal ve Dengeli Sonuçlar</h5>
-                            <p>Güzelliğinizi korurken doğal görünümünüzden ödün vermezsiniz.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-5">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-6">
-                        <h3 class="mb-3">İletişim</h3>
-                        <p><i class="fa-solid fa-location-dot me-2"></i>Merkez Mahallesi Vefa sokak no:32 kat:1 Çekmeköy/ İstanbul</p>
-                        <p><i class="fa-solid fa-phone me-2"></i>0546 671 63 48</p>
-                        <p><i class="fa-brands fa-whatsapp me-2"></i><a href="https://wa.me/905466716348" target="_blank" class="text-decoration-none text-dark">WhatsApp</a></p>
-                        <p><i class="fa-solid fa-envelope me-2"></i><a href="mailto:tanorea@tanorea.com.tr" class="text-decoration-none text-dark">tanorea@tanorea.com.tr</a></p>
-                        <iframe class="w-100 rounded" height="250" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12092.839595667382!2d29.1873989!3d41.0063569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAwJzIwLjgiTiAyOcKwMTEnMjAuMCJF!5e0!3m2!1str!2str!4v1685555555555"></iframe>
-                    </div>
-                    <div class="col-lg-6">
-                        <form id="contactForm" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" class="p-4 bg-light rounded shadow-sm">
-                            <div class="mb-3">
-                                <label for="fullName" class="form-label">Adınız Soyadınız</label>
-                                <input type="text" class="form-control" id="fullName" name="fullName" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">E-posta</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Telefon</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Mesajınız</label>
-                                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Gönder</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="py-4 bg-dark text-white text-center">
-        <div class="container position-relative">
-            <p class="mb-2">&copy; 2025 Tanorea Clinic. Tüm hakları saklıdır.</p>
-            <div class="mb-3">
-                <a href="https://www.instagram.com/tanoreaclinic" target="_blank" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/share/1Dm3d8h6rq/" target="_blank" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.tiktok.com/@tanoreaclinic" target="_blank" class="text-white"><i class="fab fa-tiktok"></i></a>
-            </div>
-            <a href="admin.html" class="text-white position-absolute end-0 top-0 me-3" aria-label="Admin">
-                <i class="fa-solid fa-gear"></i>
-            </a>
-        </div>
-    </footer>
-
-    <div class="modal fade" id="appointmentModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Randevu Al</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" id="appointmentForm">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="aName" class="form-label">Adınız Soyadınız</label>
-                            <input type="text" id="aName" name="name" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="aPhone" class="form-label">Telefon</label>
-                            <input type="tel" id="aPhone" name="phone" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="aDate" class="form-label">Tercih Edilen Tarih</label>
-                            <input type="date" id="aDate" name="date" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Gönder</button>
-                    </div>
-                    <div class="footer-links">
-                        <h5>Hızlı Erişim</h5>
-                        <ul>
-                            <li><a href="#hakkimizda">Hakkımızda</a></li>
-                            <li><a href="#hizmetler">Hizmetler</a></li>
-                            <li><a href="#iletisim">İletişim</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>İletişime Geçin</h4>
-                        <ul class="footer-links">
-                            <li><a href="mailto:tanorea@tanorea.com.tr">tanorea@tanorea.com.tr</a></li>
-                            <li><a href="tel:+905466716348">+90 546 671 63 48</a></li>
-                            <li><a href="https://www.google.com/maps/search/?api=1&query=Tanorea+Clinic+-+G%C3%BCzellik+Merkezi+Merkez+mahallesi+vefa+sokak+no:32+Çekmeköy+İSTANBUL" target="_blank" rel="noopener noreferrer">Tanorea Clinic - Güzellik Merkezi<br>Merkez mahallesi vefa sokak no:32 Çekmeköy / İSTANBUL</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-newsletter">
-                        <h5>Güncel Kalın</h5>
-                        <p>Kampanya ve indirimlerden haberdar olmak için bültenimize kaydolun.</p>
-                        <form>
-                            <input type="email" placeholder="E-posta adresiniz">
-                            <button type="submit">Gönder</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2025 Tanorea Clinic. Tüm hakları saklıdır. <a href="admin.html" class="footer-admin-link">Admin</a></p>
-                    <div class="social-icons">
-                       <a href="https://www.instagram.com/tanoreaclinic" target="_blank"><i class="fab fa-instagram"></i></a>
-                       <a href="https://www.facebook.com/share/1Dm3d8h6rq/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                       <a href="https://www.tiktok.com/@tanoreaclinic" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+<!doctype html>
+<html lang="tr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Okufast · Okumaya odaklan.</title>
+    <style>
+      :root {
+        --bg: #f7f6f2;
+        --paper: #fffefa;
+        --ink: #292b28;
+        --muted: #54584e;
+        --line: #dcded4;
+        --control-line: #808577;
+        --soft: #eeeee7;
+        --accent: #9b3526;
+        --word-accent: var(--accent);
+        --button: #303e34;
+        --on-button: #fff;
+        --reader-font: Georgia, "Times New Roman", serif;
+        --context-size: 1.5rem;
+        color-scheme: light;
+      }
+      [data-theme="sepia"] {
+        --bg: #eee4d1;
+        --paper: #f8eedb;
+        --ink: #3e3427;
+        --muted: #5c4d3b;
+        --line: #d2c3a9;
+        --control-line: #786b58;
+        --soft: #e4d8c0;
+        --accent: #923324;
+        --button: #51452e;
+        color-scheme: light;
+      }
+      [data-theme="dark"] {
+        --bg: #202420;
+        --paper: #292e28;
+        --ink: #f4f6ef;
+        --muted: #c7cfbf;
+        --line: #444c41;
+        --control-line: #86907f;
+        --soft: #30382e;
+        --accent: #ffa38d;
+        --button: #d4dfc8;
+        --on-button: #232a21;
+        color-scheme: dark;
+      }
+      [data-theme="contrast"] {
+        --bg: #101010;
+        --paper: #1b1b1b;
+        --ink: #ffffff;
+        --muted: #e0e0e0;
+        --line: #969696;
+        --control-line: #969696;
+        --soft: #292929;
+        --accent: #ffd45c;
+        --button: #ffd45c;
+        --on-button: #101010;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Segoe UI", system-ui, sans-serif;
+        font-size: 14px;
+        min-height: 100dvh;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button {
+        color: inherit;
+        cursor: pointer;
+        border: 0;
+        background: none;
+      }
+      button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      button,
+      select,
+      a {
+        touch-action: manipulation;
+      }
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      [tabindex="0"]:focus-visible,
+      a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      ::selection {
+        background: var(--button);
+        color: var(--on-button);
+      }
+      * {
+        scrollbar-color: var(--muted) var(--soft);
+        scrollbar-width: thin;
+      }
+      input {
+        accent-color: var(--button);
+        caret-color: var(--accent);
+      }
+      [hidden] {
+        display: none !important;
+      }
+      svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+      a {
+        color: inherit;
+        text-underline-offset: 4px;
+      }
+      .app {
+        max-width: 1600px;
+        margin: auto;
+        padding: 0 48px;
+      }
+      .topbar {
+        height: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+        gap: 24px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 24px;
+        font-weight: 650;
+        letter-spacing: -1px;
+      }
+      .brand svg {
+        width: 27px;
+        height: 27px;
+      }
+      .brand small {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0;
+        color: var(--muted);
+        border-left: 1px solid var(--line);
+        padding-left: 18px;
+        margin-left: 14px;
+      }
+      .top-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .themes {
+        display: flex;
+        gap: 3px;
+        background: var(--soft);
+        padding: 4px;
+        border-radius: 24px;
+      }
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+      .icon-btn:hover,
+      .quiet:hover {
+        background: var(--soft);
+      }
+      .themes .icon-btn {
+        width: 44px;
+        height: 44px;
+        border: 1px solid transparent;
+      }
+      .themes [aria-pressed="true"] {
+        background: var(--paper);
+        border-color: var(--accent);
+      }
+      .primary {
+        background: var(--button);
+        color: var(--on-button);
+        border-radius: 7px;
+        padding: 11px 17px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        font-weight: 550;
+      }
+      .primary:hover {
+        filter: brightness(1.1);
+      }
+      .quiet {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 6px;
+        padding: 10px 12px;
+      }
+      .document-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 26px 0;
+      }
+      .document-id {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        min-width: 0;
+      }
+      .book-icon {
+        width: 39px;
+        height: 45px;
+        display: grid;
+        place-items: center;
+        background: var(--soft);
+        border-radius: 3px;
+      }
+      .book-info {
+        min-width: 0;
+      }
+      .book-info h1 {
+        font-size: 14px;
+        margin: 0 0 5px;
+        font-weight: 600;
+        max-width: 430px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .meta {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .view-tabs {
+        display: flex;
+        gap: 4px;
+        background: var(--soft);
+        padding: 4px;
+        border-radius: 7px;
+      }
+      .view-tabs button {
+        border: 1px solid transparent;
+        padding: 8px 14px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+      .view-tabs [aria-pressed="true"] {
+        background: var(--paper);
+        border-color: var(--control-line);
+      }
+      .reader {
+        min-height: 350px;
+        height: clamp(350px, 48vh, 580px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .reader-note {
+        color: var(--muted);
+        font-size: 13px;
+        position: absolute;
+        top: 28px;
+        text-align: center;
+        line-height: 1.7;
+        margin: 0;
+      }
+      .stage {
+        width: min(720px, 100%);
+        height: 170px;
+        position: relative;
+      }
+      .guide {
+        position: absolute;
+        left: 0;
+        right: 0;
+        border-top: 1px solid var(--line);
+      }
+      .guide.top {
+        top: 0;
+      }
+      .guide.bottom {
+        bottom: 0;
+      }
+      .guide:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        width: 1px;
+        background: var(--accent);
+        height: 12px;
+        transform: translateX(-50%);
+      }
+      .guide.top:after {
+        top: 0;
+      }
+      .guide.bottom:after {
+        bottom: 0;
+      }
+      .word {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-family: var(--reader-font);
+        font-size: 4.5rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        font-kerning: none;
+        font-variant-ligatures: none;
+      }
+      .word .left {
+        position: absolute;
+        right: 100%;
+        top: 0;
+      }
+      .word .right {
+        position: absolute;
+        left: 100%;
+        top: 0;
+      }
+      .word .pivot {
+        color: var(--word-accent);
+      }
+      .reader-hint {
+        position: absolute;
+        bottom: 26px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .status-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--muted);
+      }
+      .playing .status-dot {
+        background: var(--accent);
+      }
+      .no-guides .guide {
+        visibility: hidden;
+      }
+      .context {
+        width: min(740px, 100%);
+        height: 100%;
+        overflow: auto;
+        padding: 36px 20px;
+        font-family: var(--reader-font);
+        font-size: var(--context-size);
+        line-height: 1.9;
+      }
+      .context button {
+        font: inherit;
+        padding: 0 2px;
+        border-radius: 3px;
+        max-width: 100%;
+        text-align: start;
+        overflow-wrap: anywhere;
+      }
+      .context button:hover {
+        background: var(--soft);
+      }
+      .context button.current {
+        background: var(--button);
+        color: var(--on-button);
+      }
+      .context p {
+        margin: 0 0 24px;
+      }
+      .controls {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 22px 0 28px;
+      }
+      .transport {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 24px;
+      }
+      .pace {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .pace input {
+        width: 53px;
+        background: none;
+        border: 0;
+        border-bottom: 1px solid transparent;
+        text-align: center;
+        font-size: 23px;
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+        appearance: textfield;
+      }
+      .pace input::-webkit-inner-spin-button {
+        appearance: none;
+      }
+      .pace input:focus {
+        border-color: var(--muted);
+      }
+      .pace small {
+        display: block;
+        font-size: 11px;
+        color: var(--muted);
+        text-align: center;
+      }
+      .pace .icon-btn {
+        width: 28px;
+        height: 28px;
+      }
+      .playback {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .jump {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 11px;
+        color: var(--muted);
+        padding: 10px 4px;
+      }
+      .play {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--button);
+        color: var(--on-button);
+      }
+      .play svg {
+        width: 23px;
+        height: 23px;
+      }
+      .focus-control {
+        justify-self: end;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .progress-area {
+        margin-top: 34px;
+      }
+      .progress-caption,
+      .progress-detail {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+      }
+      .progress-caption {
+        margin-bottom: 12px;
+      }
+      .progress-caption strong {
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .progress-detail {
+        margin-top: 10px;
+        font-size: 11px;
+        flex-wrap: wrap;
+      }
+      .seek {
+        display: block;
+        width: 100%;
+        height: 14px;
+        margin: 0;
+        cursor: pointer;
+        appearance: none;
+        background: transparent;
+      }
+      .seek::-webkit-slider-runnable-track {
+        height: 4px;
+        border-radius: 2px;
+        background: linear-gradient(
+          to right,
+          var(--button) var(--progress, 0%),
+          var(--control-line) var(--progress, 0%)
+        );
+      }
+      .seek::-webkit-slider-thumb {
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 2px solid var(--bg);
+        background: var(--button);
+        margin-top: -6px;
+      }
+      .seek::-moz-range-track {
+        height: 4px;
+        background: var(--control-line);
+      }
+      .seek::-moz-range-progress {
+        height: 4px;
+        background: var(--button);
+      }
+      .seek::-moz-range-thumb {
+        height: 12px;
+        width: 12px;
+        border: 2px solid var(--bg);
+        background: var(--button);
+      }
+      .footer {
+        border-top: 1px solid var(--line);
+        padding: 22px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 11px;
+        gap: 16px;
+      }
+      .shortcuts {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .shortcuts span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      kbd {
+        font:
+          11px "Segoe UI",
+          sans-serif;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 3px 6px;
+        background: var(--paper);
+      }
+      .privacy {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .privacy svg {
+        width: 14px;
+        height: 14px;
+      }
+      .drop-hint {
+        border-top: 1px dashed var(--line);
+        margin: 24px auto 32px;
+        padding: 21px 0 0;
+        max-width: 760px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+      }
+      .drop-hint p {
+        margin: 0 0 5px;
+        font-size: 13px;
+      }
+      .drop-hint .quiet {
+        font-size: 12px;
+      }
+      .panel {
+        position: fixed;
+        right: 22px;
+        top: 80px;
+        bottom: 22px;
+        width: 360px;
+        z-index: 5;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        box-shadow: 0 14px 50px #0002;
+        padding: 24px;
+        overflow: auto;
+      }
+      .panel header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+      }
+      .panel h2 {
+        font-family: Georgia, serif;
+        font-size: 26px;
+        font-weight: 400;
+        margin: 0;
+      }
+      .setting {
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .setting label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .setting .pause-label {
+        margin-top: 16px;
+      }
+      .setting output {
+        flex: none;
+        font-variant-numeric: tabular-nums;
+      }
+      .setting p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.7;
+        margin: 8px 0 0;
+      }
+      .setting select,
+      .import-review select {
+        max-width: 170px;
+        background: var(--soft);
+        color: var(--ink);
+        border: 1px solid var(--control-line);
+        border-radius: 5px;
+        padding: 7px;
+      }
+      .setting input[type="range"] {
+        width: 100%;
+        min-height: 28px;
+        margin: 6px 0 0;
+      }
+      .setting input[type="checkbox"] {
+        width: 17px;
+        height: 17px;
+      }
+      .setting input[type="color"] {
+        width: 30px;
+        height: 26px;
+        border: 0;
+        padding: 0;
+        background: none;
+      }
+      .chapter-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .preface-setting {
+        margin-bottom: 12px;
+        padding-top: 0;
+      }
+      .chapter-list button {
+        text-align: left;
+        padding: 12px;
+        border-radius: 5px;
+        line-height: 1.5;
+      }
+      .chapter-list button:hover,
+      .chapter-list .active {
+        background: var(--soft);
+      }
+      .chapter-list button:disabled {
+        opacity: 0.45;
+      }
+      .notice {
+        max-width: 760px;
+        margin: 4px auto;
+        padding: 13px 16px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        font-size: 13px;
+        line-height: 1.5;
+        background: var(--paper);
+      }
+      .notice span {
+        flex: 1;
+        overflow-wrap: anywhere;
+      }
+      .notice.error {
+        border-color: var(--accent);
+      }
+      .import-review {
+        width: min(34rem, calc(100% - 24px));
+        max-height: calc(100dvh - 24px);
+        margin: auto;
+        padding: 28px;
+        border: 1px solid var(--control-line);
+        background: var(--paper);
+        color: var(--ink);
+        overflow: auto;
+      }
+      .import-review::backdrop {
+        background: rgb(0 0 0 / 65%);
+      }
+      .import-review h2 {
+        margin: 0;
+        font: 400 1.625rem Georgia, serif;
+      }
+      .import-review p {
+        color: var(--muted);
+        line-height: 1.55;
+        overflow-wrap: anywhere;
+      }
+      .import-review label {
+        display: block;
+        margin-block: 16px 6px;
+      }
+      .import-review select {
+        width: 100%;
+        max-width: none;
+        min-height: 44px;
+      }
+      .review-sample {
+        padding: 12px 14px;
+        max-height: min(28dvh, 12rem);
+        overflow: auto;
+        background: var(--soft);
+        border: 1px solid var(--control-line);
+        font: 1rem/1.55 var(--reader-font);
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+      .review-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .review-actions button {
+        min-height: 44px;
+      }
+      .drop-overlay {
+        position: fixed;
+        inset: 16px;
+        background: var(--paper);
+        border: 2px dashed var(--muted);
+        border-radius: 12px;
+        z-index: 20;
+        display: grid;
+        place-items: center;
+        pointer-events: none;
+      }
+      .drop-overlay p {
+        font:
+          36px Georgia,
+          serif;
+      }
+      .loading-bar {
+        height: 2px;
+        background: var(--line);
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 30;
+      }
+      .loading-bar i {
+        display: block;
+        height: 100%;
+        background: var(--accent);
+        width: 0;
+      }
+      .focus-exit {
+        position: fixed;
+        right: 24px;
+        top: 20px;
+        z-index: 2;
+        background: var(--paper);
+      }
+      body.focus .topbar,
+      body.focus .document-bar,
+      body.focus .footer,
+      body.focus .drop-hint,
+      body.focus .reader-note,
+      body.focus .reader-hint,
+      body.focus .pace,
+      body.focus .focus-control,
+      body.focus .progress-detail {
+        visibility: hidden;
+      }
+      body.focus .drop-hint {
+        display: none;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media (min-width: 701px) {
+        .reader-note { top: 0; }
+        .reader {
+          height: clamp(280px, calc(100dvh - 600px), 540px);
+          min-height: 280px;
+        }
+        body.has-book .reader {
+          height: clamp(280px, calc(100dvh - 475px), 660px);
+        }
+      }
+      @media (max-width: 700px) {
+        .app {
+          padding: 0 20px;
+        }
+        .topbar {
+          height: 74px;
+          gap: 12px;
+        }
+        .brand {
+          font-size: 22px;
+        }
+        .brand small {
+          display: none;
+        }
+        .top-actions {
+          gap: 6px;
+        }
+        .top-actions .primary {
+          padding: 10px;
+        }
+        .top-actions .primary span {
+          display: none;
+        }
+        .document-bar {
+          padding: 16px 0;
+          align-items: flex-start;
+        }
+        .book-info h1 {
+          max-width: 200px;
+          font-size: 13px;
+        }
+        .book-icon {
+          display: none;
+        }
+        .view-tabs button {
+          padding: 7px 9px;
+          font-size: 11px;
+        }
+        .reader {
+          height: 40dvh;
+          min-height: 240px;
+        }
+        .stage {
+          height: 150px;
+        }
+        .reader-note {
+          top: 12px;
+        }
+        .reader-hint {
+          bottom: 24px;
+        }
+        .transport {
+          gap: 12px;
+        }
+        .playback {
+          gap: 10px;
+        }
+        .play {
+          width: 52px;
+          height: 52px;
+        }
+        .focus-control span {
+          display: none;
+        }
+        .pace {
+          gap: 0;
+        }
+        .pace input {
+          font-size: 20px;
+          width: 45px;
+        }
+        .pace .icon-btn {
+          width: 24px;
+        }
+        .controls {
+          padding: 10px 0 24px;
+        }
+        .progress-area {
+          margin-top: 28px;
+        }
+        .footer {
+          justify-content: center;
+        }
+        .shortcuts {
+          display: none;
+        }
+        .drop-hint {
+          margin-top: 12px;
+          padding-top: 18px;
+        }
+        .drop-hint .meta {
+          font-size: 11px;
+        }
+        .panel {
+          inset: 80px 12px 12px;
+          width: auto;
+        }
+        .book-info .meta {
+          max-width: 190px;
+        }
+        .context {
+          padding: 20px 0;
+        }
+        .progress-caption {
+          font-size: 11px;
+        }
+        .progress-detail {
+          font-size: 11px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          scroll-behavior: auto !important;
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+      .pace small {
+        white-space: nowrap;
+      }
+      .pace input {
+        width: 58px;
+      }
+      @media (max-width: 700px), (pointer: coarse) {
+        .icon-btn,
+        .top-actions .primary,
+        .jump,
+        .focus-control,
+        .focus-exit,
+        .view-tabs button,
+        .pace .icon-btn,
+        .pace input,
+        .setting select {
+          min-width: 44px;
+          min-height: 44px;
+        }
+        .setting label,
+        .setting input[type="range"] {
+          min-height: 44px;
+        }
+        .seek {
+          height: 44px;
+        }
+        .progress-caption {
+          margin-bottom: 2px;
+        }
+        .progress-detail {
+          margin-top: 2px;
+        }
+      }
+      @media (max-width: 480px) {
+        .app {
+          padding-inline: 16px;
+        }
+        .import-review {
+          padding: 16px;
+        }
+        .topbar {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto auto;
+          height: auto;
+          gap: 6px 8px;
+          padding-block: 8px;
+        }
+        .top-actions {
+          display: contents;
+        }
+        .top-actions .themes {
+          grid-area: 2 / 1 / 3 / -1;
+          justify-self: center;
+        }
+        .document-bar {
+          gap: 10px;
+        }
+        .view-tabs {
+          flex-shrink: 0;
+        }
+        .transport {
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-areas: "play play" "pace focus";
+          gap: 8px;
+        }
+        .pace {
+          grid-area: pace;
+        }
+        .playback {
+          grid-area: play;
+          justify-content: center;
+        }
+        .focus-control {
+          grid-area: focus;
+          justify-content: center;
+        }
+        .progress-area {
+          margin-top: 14px;
+        }
+      }
+      @media (orientation: landscape) and (max-height: 450px) {
+        .topbar {
+          height: auto;
+          min-height: 54px;
+        }
+        .document-bar {
+          padding-block: 0;
+        }
+        .view-tabs {
+          padding-block: 0;
+        }
+        .reader,
+        body.has-book .reader {
+          height: 106px;
+          min-height: 106px;
+        }
+        .stage {
+          height: 104px;
+        }
+        .word {
+          line-height: 1;
+        }
+        .reader-note,
+        .reader-hint {
+          display: none;
+        }
+        .controls {
+          padding-top: 6px;
+        }
+        .panel {
+          top: 8px;
+          bottom: 8px;
+        }
+        .notice {
+          margin-block: 0;
+          padding-block: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg aria-hidden="true" style="display: none">
+      <defs>
+        <symbol id="i-book" viewBox="0 0 24 24">
+          <path
+            d="M3 4h6a4 4 0 0 1 3 1.4A4 4 0 0 1 15 4h6v16h-6a4 4 0 0 0-3 1 4 4 0 0 0-3-1H3zM12 6v15"
+          />
+        </symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24">
+          <path d="M12 5v14M5 12h14" />
+        </symbol>
+        <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" /></symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4" />
+          <path
+            d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+          />
+        </symbol>
+        <symbol id="i-sepia" viewBox="0 0 24 24">
+          <path
+            d="M18 4C9 4 4 8 4 14a6 6 0 0 0 12 0c0-4 2-10 2-10ZM4 21l9-12"
+          />
+        </symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24">
+          <path d="M20 14a8.5 8.5 0 0 1-10-10 8.5 8.5 0 1 0 10 10Z" />
+        </symbol>
+        <symbol id="i-contrast" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8" />
+          <path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="i-settings" viewBox="0 0 24 24">
+          <path d="M4 7h16M4 17h16" />
+          <circle cx="9" cy="7" r="3" fill="var(--bg)" />
+          <circle cx="16" cy="17" r="3" fill="var(--bg)" />
+        </symbol>
+        <symbol id="i-play" viewBox="0 0 24 24">
+          <path d="m9 5 11 7-11 7Z" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24">
+          <path d="M9 5v14M16 5v14" stroke-width="3" />
+        </symbol>
+        <symbol id="i-back" viewBox="0 0 24 24">
+          <path d="m13 5-7 7 7 7M19 5l-7 7 7 7" />
+        </symbol>
+        <symbol id="i-forward" viewBox="0 0 24 24">
+          <path d="m5 5 7 7-7 7m6-14 7 7-7 7" />
+        </symbol>
+        <symbol id="i-focus" viewBox="0 0 24 24">
+          <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />
+        </symbol>
+        <symbol id="i-close" viewBox="0 0 24 24">
+          <path d="m6 6 12 12M6 18 18 6" />
+        </symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24">
+          <rect x="5" y="10" width="14" height="11" rx="2" />
+          <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3" />
+        </symbol>
+        <symbol id="i-list" viewBox="0 0 24 24">
+          <path d="M9 5h12M9 12h12M9 19h12M3 5h1M3 12h1M3 19h1" />
+        </symbol>
+      </defs>
+    </svg>
+    <div class="loading-bar" id="loadingBar" hidden>
+      <i id="loadProgress"></i>
     </div>
-
-    <script src="./js/main.js"></script>
-    <script src="./js/cms.js"></script>
-
-</body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <svg><use href="#i-book" /></svg>okufast<small
+            >Okumaya odaklan.</small
+          >
+        </div>
+        <div class="top-actions">
+          <div class="themes" role="group" aria-label="Görünüm">
+            <button
+              class="icon-btn"
+              data-theme="light"
+              aria-label="Açık tema"
+              aria-pressed="true"
+              title="Açık"
+            >
+              <svg><use href="#i-sun" /></svg></button
+            ><button
+              class="icon-btn"
+              data-theme="sepia"
+              aria-label="Sepya tema"
+              aria-pressed="false"
+              title="Sepya"
+            >
+              <svg><use href="#i-sepia" /></svg></button
+            ><button
+              class="icon-btn"
+              data-theme="dark"
+              aria-label="Koyu tema"
+              aria-pressed="false"
+              title="Koyu"
+            >
+              <svg><use href="#i-moon" /></svg></button
+            ><button
+              class="icon-btn"
+              data-theme="contrast"
+              aria-label="Yüksek Kontrast"
+              aria-pressed="false"
+              title="Yüksek Kontrast"
+            >
+              <svg><use href="#i-contrast" /></svg>
+            </button>
+          </div>
+          <button
+            class="icon-btn"
+            id="settingsToggle"
+            aria-label="Okuma ayarları"
+            aria-expanded="false"
+            title="Okuma ayarları"
+          >
+            <svg><use href="#i-settings" /></svg></button
+          ><button class="primary" data-open-file>
+            <svg><use href="#i-plus" /></svg><span>Kitap aç</span>
+          </button>
+        </div>
+      </header>
+      <section class="document-bar" aria-label="Açık kitap">
+        <div class="document-id">
+          <div class="book-icon">
+            <svg><use href="#i-book" /></svg>
+          </div>
+          <div class="book-info">
+            <h1 id="bookTitle">Okumaya bir başlangıç</h1>
+            <div class="meta" id="bookMeta">Örnek metin · Türkçe</div>
+          </div>
+        </div>
+        <div class="view-tabs" role="group" aria-label="Okuma görünümü">
+          <button id="rsvpTab" aria-pressed="true">Hızlı okuma</button
+          ><button id="textTab" aria-pressed="false">Metin</button>
+        </div>
+      </section>
+      <div class="notice" id="notice" role="status" hidden>
+        <span id="noticeText"></span
+        ><button
+          class="icon-btn"
+          id="dismissNotice"
+          aria-label="Bildirimi kapat"
+        >
+          <svg><use href="#i-close" /></svg>
+        </button>
+      </div>
+      <main>
+        <section class="reader" aria-label="Okuyucu">
+          <p class="reader-note" id="readerNote">
+            Gözün merkezde kalsın.<br />Kelimeler sana gelsin.
+          </p>
+          <div class="stage" id="stage" aria-hidden="true">
+            <div class="guide top"></div>
+            <div class="word" id="word">
+              <span class="left" id="wordLeft"></span
+              ><span class="pivot" id="wordPivot"></span
+              ><span class="right" id="wordRight"></span>
+            </div>
+            <div class="guide bottom"></div>
+          </div>
+          <article
+            class="context"
+            id="context"
+            aria-label="Okuma metni; bir kelimeyi seçerek o noktaya geçin"
+            hidden
+          ></article>
+          <div class="reader-hint" id="readerHint">
+            <span class="status-dot"></span
+            ><span id="stateText">Hazır olduğunda başlat</span>
+          </div>
+        </section>
+        <section class="controls" aria-label="Okuma kontrolleri">
+          <div class="transport">
+            <div class="pace">
+              <button
+                class="icon-btn"
+                id="slower"
+                aria-label="25 kelime yavaşlat"
+              >
+                <svg><use href="#i-minus" /></svg>
+              </button>
+              <div>
+                <input
+                  id="wpm"
+                  type="number"
+                  min="100"
+                  max="1000"
+                  step="25"
+                  value="300"
+                  aria-label="Dakikada kelime"
+                /><small>kelime / dk</small>
+              </div>
+              <button
+                class="icon-btn"
+                id="faster"
+                aria-label="25 kelime hızlandır"
+              >
+                <svg><use href="#i-plus" /></svg>
+              </button>
+            </div>
+            <div class="playback">
+              <button
+                class="jump"
+                id="back"
+                aria-label="10 kelime geri"
+                title="10 kelime geri"
+              >
+                <svg><use href="#i-back" /></svg>10</button
+              ><button class="play" id="play" aria-label="Okumayı başlat">
+                <svg><use id="playIcon" href="#i-play" /></svg></button
+              ><button
+                class="jump"
+                id="forward"
+                aria-label="10 kelime ileri"
+                title="10 kelime ileri"
+              >
+                10<svg><use href="#i-forward" /></svg>
+              </button>
+            </div>
+            <button
+              class="quiet focus-control"
+              id="focusToggle"
+              aria-label="Odak modunu aç"
+              aria-pressed="false"
+            >
+              <svg><use href="#i-focus" /></svg><span>Odak modu</span>
+            </button>
+          </div>
+          <div class="progress-area">
+            <div class="progress-caption">
+              <button
+                id="sectionsToggle"
+                style="padding: 0; text-align: left"
+                aria-expanded="false"
+              >
+                <strong id="location">Örnek metin</strong></button
+              ><span id="remaining">Kalan süre</span>
+            </div>
+            <input
+              class="seek"
+              id="seek"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              step="1"
+              aria-label="Kitapta konum"
+            />
+            <div class="progress-detail">
+              <span id="wordCount"></span
+              ><span id="elapsed">Okunan süre 0:00</span
+              ><span id="percent">%0</span>
+            </div>
+          </div>
+        </section>
+        <section class="drop-hint" id="dropHint">
+          <div>
+            <p>Sıradaki kitabına yer var.</p>
+            <span class="meta">PDF, EPUB veya TXT dosyanı buraya sürükle.</span>
+          </div>
+          <button class="quiet" data-open-file>
+            <svg><use href="#i-book" /></svg>Dosya seç
+          </button>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="shortcuts">
+          <span><kbd>Space</kbd> başlat / duraklat</span
+          ><span><kbd>←</kbd><kbd>→</kbd> 10 kelime</span
+          ><span><kbd>F</kbd> odaklan</span>
+        </div>
+        <div class="privacy">
+          <svg><use href="#i-lock" /></svg>Kitabın yalnızca bu tarayıcıda.
+        </div>
+      </footer>
+    </div>
+    <button class="quiet focus-exit" id="focusExit" hidden>
+      <svg><use href="#i-focus" /></svg>Odaktan çık <kbd>Esc</kbd>
+    </button>
+    <aside class="panel" id="settingsPanel" aria-label="Okuma ayarları" hidden>
+      <header>
+        <h2>Kendi ritminde.</h2>
+        <button class="icon-btn" data-close-panel aria-label="Ayarları kapat">
+          <svg><use href="#i-close" /></svg>
+        </button>
+      </header>
+      <div class="setting">
+        <label for="font"
+          >Yazı karakteri<select id="font">
+            <option value="serif">Kitap · Serif</option>
+            <option value="sans">Sade · Sans</option>
+            <option value="mono">Eş aralıklı · Mono</option>
+          </select></label
+        >
+      </div>
+      <div class="setting">
+        <label for="size"
+          >Yazı boyutu <output id="sizeValue">72 px</output></label
+        ><input id="size" type="range" min="36" max="96" step="2" value="72" />
+      </div>
+      <div class="setting">
+        <label for="smart"
+          >Akıllı ritim<input type="checkbox" id="smart" checked
+        /></label>
+        <p>
+          Uzun kelimelere, sayılara ve paragraf sonlarına biraz daha zaman
+          ayırır.
+        </p>
+      </div>
+      <div class="setting">
+        <label for="punctuation"
+          >Noktalama molaları<input type="checkbox" id="punctuation" checked
+        /></label>
+        <p id="pauseHelp">Varsayılan ritim, cümle sonunda bir vuruş ve virgülde yarım vuruş ekler.</p>
+        <label for="pauseScale" class="pause-label">
+          Mola süresi <output id="pauseValue" for="pauseScale">%100</output>
+        </label>
+        <input id="pauseScale" type="range" min="50" max="150" step="25" value="100" aria-describedby="pauseHelp" />
+      </div>
+      <div class="setting">
+        <label for="guides"
+          >Odak çizgileri<input type="checkbox" id="guides" checked
+        /></label>
+      </div>
+      <div class="setting">
+        <label for="accent"
+          >Odak harfinin rengi<input id="accent" type="color" value="#9b3526" aria-describedby="accentHelp"
+        /></label>
+        <p id="accentHelp" hidden></p>
+      </div>
+      <div class="setting">
+        <p>
+          PDF dipnotları korunur; tekrarlanan kenar başlıkları ayıklanır.
+          Görüntü tabanlı sayfalar için OCR bu sürümde yoktur. Karmaşık
+          PDF'lerde okuma sırasını Metin görünümünden kontrol et.
+        </p>
+      </div>
+      <button class="quiet" id="resetSettings" style="margin-top: 18px">
+        Ayarları sıfırla
+      </button>
+    </aside>
+    <aside
+      class="panel"
+      id="sectionsPanel"
+      aria-label="Sayfa ve bölüm seçimi"
+      hidden
+    >
+      <header>
+        <h2 id="sectionsTitle">İçindekiler</h2>
+        <button
+          class="icon-btn"
+          data-close-panel
+          aria-label="İçindekileri kapat"
+        >
+          <svg><use href="#i-close" /></svg>
+        </button>
+      </header>
+      <div class="setting preface-setting" id="prefaceSetting" hidden>
+        <label for="omitPreface">
+          Önsözü çıkar <input type="checkbox" id="omitPreface" aria-describedby="prefaceHelp" />
+        </label>
+        <p id="prefaceHelp">Hızlı okuma ve Metin görünümü için bu kitaba özel bir tercih.</p>
+      </div>
+      <div class="chapter-list" id="chapterList"></div>
+    </aside>
+    <dialog id="importReview" class="import-review" aria-labelledby="importReviewTitle">
+      <form method="dialog">
+        <h2 id="importReviewTitle">Metni kontrol et</h2>
+        <p id="reviewBook"></p>
+        <label for="reviewSection">Etkilenen sayfa veya bölüm</label>
+        <select id="reviewSection"></select>
+        <p id="reviewIssue" role="status"></p>
+        <div id="reviewSample" class="review-sample" tabindex="0" role="region" aria-label="Metin örneği"></div>
+        <div class="review-actions">
+          <button class="quiet" value="cancel" autofocus>Vazgeç</button>
+          <button class="primary" value="accept">Bu metinle devam et</button>
+        </div>
+      </form>
+    </dialog>
+    <input id="fileInput" type="file" accept=".pdf,.epub,.txt" hidden />
+    <div class="drop-overlay" id="dropOverlay" hidden>
+      <p>Kitabını buraya bırak.</p>
+    </div>
+    <div class="sr-only" role="status" id="accessibleStatus"></div>
+    <script>
+      "use strict";
+      // All document content stays in memory. Only preferences and hash-keyed positions persist.
+      const $ = (id) => document.getElementById(id),
+        clamp = (v, min, max) => Math.min(max, Math.max(min, v)),
+        yieldUI = () => new Promise((r) => setTimeout(r, 0));
+      const DEFAULTS = {
+        wpm: 300,
+        theme: "light",
+        font: "serif",
+        size: 72,
+        smart: true,
+        punctuation: true,
+        pauseScale: 100,
+        guides: true,
+        accent: null,
+      };
+      const SettingsManager = {
+        load() {
+          try {
+            return {
+              ...DEFAULTS,
+              ...JSON.parse(localStorage.getItem("okufast.settings") || "{}"),
+            };
+          } catch {
+            return { ...DEFAULTS };
+          }
+        },
+        save(s) {
+          try {
+            localStorage.setItem("okufast.settings", JSON.stringify(s));
+          } catch {}
+        },
+        position(key, data) {
+          try {
+            if (data)
+              localStorage.setItem(
+                "okufast.position." + key,
+                JSON.stringify(data),
+              );
+            else
+              return JSON.parse(
+                localStorage.getItem("okufast.position." + key) || "null",
+              );
+          } catch {}
+        },
+      };
+      let settings = SettingsManager.load();
+      settings.wpm = clamp(Number(settings.wpm) || 300, 100, 1000);
+      settings.size = clamp(Number(settings.size) || 72, 36, 96);
+      settings.pauseScale = clamp(
+        Math.round((Number(settings.pauseScale) || DEFAULTS.pauseScale) / 25) * 25,
+        50,
+        150,
+      );
+      if (!["light", "sepia", "dark", "contrast"].includes(settings.theme))
+        settings.theme = "light";
+      const graphemeSegmenter =
+        typeof Intl.Segmenter === "function"
+          ? new Intl.Segmenter("tr", { granularity: "grapheme" })
+          : null;
+      const graphemes = (t) =>
+        graphemeSegmenter
+          ? Array.from(graphemeSegmenter.segment(t), (v) => v.segment)
+          : Array.from(t);
+      const ORPEngine = {
+        split(text) {
+          const chars = graphemes(text),
+            indices = [];
+          chars.forEach((c, i) => {
+            if (/[\p{L}\p{N}]/u.test(c)) indices.push(i);
+          });
+          const n = indices.length;
+          const lexical =
+            n <= 1 ? 0 : n <= 5 ? 1 : n <= 9 ? 2 : n <= 13 ? 3 : 4;
+          const at = indices[lexical] ?? 0;
+          return {
+            left: chars.slice(0, at).join(""),
+            pivot: chars[at] || "",
+            right: chars.slice(at + 1).join(""),
+            lexical,
+            length: n,
+          };
+        },
+      };
+      const spaceDashes = (text) =>
+        text.replace(/([\p{L}\p{N}])([—–])(?=[\p{L}\p{N}])/gu, "$1 $2 ");
+      const Tokenizer = {
+        tokenize(text, section, page) {
+          const tokens = [],
+            normalized = spaceDashes(
+              text.normalize("NFC").replace(/\r\n?/g, "\n").replace(/\u00ad/g, ""),
+            );
+          // Preserve apostrophes, decimals and attached punctuation; do not split lexical units on punctuation.
+          for (const match of normalized.matchAll(/(\S+)(\s*)/gu)) {
+            const value = match[1],
+              gap = match[2];
+            if (!/[\p{L}\p{N}]/u.test(value) && tokens.length) {
+              tokens.at(-1).text += " " + value;
+              tokens.at(-1).paragraphBreak ||= /\n\s*\n/.test(gap);
+              continue;
+            }
+            tokens.push({
+              text: value,
+              charOffset: match.index,
+              section,
+              page,
+              paragraphBreak: /\n\s*\n/.test(gap),
+            });
+          }
+          return tokens.map((t) => {
+            t.orp = ORPEngine.split(t.text);
+            const core = t.text
+              .replace(/^[“‘«‹"'([{]+/u, "")
+              .replace(/[”’»›"'\)\]\}\s]+$/u, "");
+            t.abbreviation =
+              /^(?:Dr|Prof|Doç|Mr|Mrs|Ms|St|vs|vb|örn|No|Sn|Av|etc|e\.g|i\.e)\.$/iu.test(
+                core,
+              ) || /^(?:\p{L}\.)+$/u.test(core);
+            t.punctuation =
+              !t.abbreviation && /[.!?…]$/.test(core)
+                ? "sentence"
+                : /[,;:]$/.test(core)
+                  ? "medium"
+                  : "none";
+            t.numeric = /\p{N}/u.test(core);
+            return t;
+          });
+        },
+      };
+      const punctuationBeats = { sentence: 1, medium: 0.5, none: 0 };
+      const TimingEngine = {
+        weight(t, s) {
+          const base = s.smart
+            ? Math.max(
+                t.orp.length >= 12 ? 1.35 : t.orp.length >= 8 ? 1.2 : 1,
+                t.numeric ? 1.25 : 1,
+              )
+            : 1;
+          const punctuation = s.punctuation
+            ? punctuationBeats[t.punctuation] * ((s.pauseScale ?? DEFAULTS.pauseScale) / 100)
+            : 0;
+          const paragraph = s.smart && t.paragraphBreak ? 0.65 : 0;
+          return base + Math.max(punctuation, paragraph);
+        },
+        delay(t, s) {
+          return (60000 / s.wpm) * this.weight(t, s);
+        },
+      };
+      class PlaybackEngine {
+        constructor(onWord, onState) {
+          this.state = "EMPTY";
+          this.index = 0;
+          this.doc = null;
+          this.timer = null;
+          this.elapsed = 0;
+          this.onWord = onWord;
+          this.onState = onState;
+          this.sessionStart = 0;
+          this.weights = [];
+        }
+        setState(s) {
+          this.state = s;
+          this.onState(s);
+        }
+        load(doc, index = 0, elapsed = 0) {
+          this.pause();
+          this.doc = doc;
+          this.index = clamp(index, 0, doc.tokens.length - 1);
+          this.elapsed = elapsed;
+          this.reweight();
+          this.setState("READY");
+          this.onWord();
+        }
+        reweight() {
+          if (!this.doc) return;
+          this.weights = new Float64Array(this.doc.tokens.length + 1);
+          for (let i = this.doc.tokens.length - 1; i >= 0; i--)
+            this.weights[i] =
+              this.weights[i + 1] +
+              TimingEngine.weight(this.doc.tokens[i], settings);
+        }
+        play() {
+          if (!this.doc || this.state === "LOADING" || this.state === "PLAYING")
+            return;
+          if (this.state === "FINISHED") this.index = 0;
+          this.sessionStart = performance.now();
+          this.setState("PLAYING");
+          this.onWord();
+          this.target =
+            performance.now() +
+            TimingEngine.delay(this.doc.tokens[this.index], settings);
+          this.schedule();
+        }
+        schedule() {
+          clearTimeout(this.timer);
+          this.timer = setTimeout(
+            () => this.tick(),
+            Math.max(0, this.target - performance.now()),
+          );
+        }
+        tick() {
+          if (this.state !== "PLAYING") return;
+          const now = performance.now();
+          if (now < this.target - 1) {
+            this.schedule();
+            return;
+          }
+          if (this.index >= this.doc.tokens.length - 1) {
+            this.pause();
+            this.setState("FINISHED");
+            this.onWord();
+            savePosition();
+            return;
+          }
+          this.index++;
+          this.onWord();
+          const delay = TimingEngine.delay(
+            this.doc.tokens[this.index],
+            settings,
+          );
+          this.target += delay;
+          // Recover small scheduler drift; after a long stall keep the word readable instead of skipping a burst.
+          if (now - this.target > delay) this.target = now + delay;
+          this.schedule();
+        }
+        pause() {
+          clearTimeout(this.timer);
+          if (this.state === "PLAYING") {
+            this.elapsed += performance.now() - this.sessionStart;
+            this.setState("PAUSED");
+          }
+        }
+        seek(index) {
+          if (!this.doc || this.state === "LOADING") return;
+          const resume = this.state === "PLAYING";
+          this.pause();
+          this.index = clamp(index, 0, this.doc.tokens.length - 1);
+          this.setState("PAUSED");
+          this.onWord();
+          if (resume) this.play();
+          savePosition();
+        }
+        time() {
+          return (
+            this.elapsed +
+            (this.state === "PLAYING"
+              ? performance.now() - this.sessionStart
+              : 0)
+          );
+        }
+        remaining() {
+          if (this.state === "FINISHED") return 0;
+          return ((this.weights[this.index] || 0) * 60000) / settings.wpm;
+        }
+      }
+      // Conservative coordinate reconstruction: rows, gap-based two-column detection and explicit soft-hyphen repair.
+      const PDFLayout = {
+        lines(items, width, height) {
+          const rows = [];
+          const sorted = items
+            .filter((i) => typeof i.str === "string" && i.str.trim())
+            .sort(
+              (a, b) =>
+                b.transform[5] - a.transform[5] ||
+                a.transform[4] - b.transform[4],
+            );
+          for (const item of sorted) {
+            const y = item.transform[5],
+              h = Math.abs(item.height || item.transform[3] || 12);
+            let row = rows.at(-1);
+            if (!row || Math.abs(row.y - y) > Math.max(2, h * 0.35)) {
+              row = { y, h, items: [] };
+              rows.push(row);
+            }
+            row.items.push(item);
+          }
+          const join = (arr) => {
+            let out = "",
+              prev = null;
+            for (const item of arr.sort(
+              (a, b) => a.transform[4] - b.transform[4],
+            )) {
+              const gap = prev
+                ? item.transform[4] - (prev.transform[4] + prev.width)
+                : 0;
+              if (
+                prev &&
+                gap > Math.max(1, rowHeight(item) * 0.12) &&
+                !out.endsWith(" ") &&
+                !item.str.startsWith(" ")
+              )
+                out += " ";
+              out += item.str;
+              prev = item;
+            }
+            return out.trim();
+          };
+          const rowHeight = (i) => Math.abs(i.height || i.transform[3] || 12);
+          let splitRows = 0;
+          for (const row of rows) {
+            row.items.sort((a, b) => a.transform[4] - b.transform[4]);
+            const split = row.items.findIndex(
+              (i, j) =>
+                j &&
+                i.transform[4] -
+                  (row.items[j - 1].transform[4] + row.items[j - 1].width) >
+                  width * 0.075 &&
+                i.transform[4] > width * 0.4 &&
+                i.transform[4] < width * 0.65,
+            );
+            row.split = split;
+            if (split > 0) splitRows++;
+          }
+          const columns = splitRows >= Math.max(3, rows.length * 0.3),
+            result = [];
+          if (columns) {
+            let band = [];
+            const flush = () => {
+              for (const side of [0, 1])
+                for (const row of band) {
+                  const part = row.items.filter((i) =>
+                    side === 0
+                      ? i.transform[4] < width * 0.49
+                      : i.transform[4] >= width * 0.49,
+                  );
+                  if (part.length)
+                    result.push({
+                      text: join(part),
+                      y: row.y,
+                      h: row.h,
+                      column: side,
+                    });
+                }
+              band = [];
+            };
+            for (const row of rows) {
+              const spanning = row.items.some(
+                (i) =>
+                  i.transform[4] < width * 0.49 &&
+                  i.transform[4] + i.width > width * 0.56,
+              );
+              if (spanning) {
+                flush();
+                result.push({
+                  text: join(row.items),
+                  y: row.y,
+                  h: row.h,
+                  column: -1,
+                });
+              } else band.push(row);
+            }
+            flush();
+          } else
+            for (const row of rows)
+              result.push({
+                text: join(row.items),
+                y: row.y,
+                h: row.h,
+                column: 0,
+              });
+          return { lines: result, width, height, columns };
+        },
+        text(page, repeated) {
+          const lines = page.lines.filter(
+            (l) =>
+              !repeated.has(this.key(l, page)) &&
+              !(
+                l.y < page.height * 0.07 &&
+                /^\s*(?:[-–]\s*)?\d{1,4}(?:\s*[-–])?\s*$/.test(l.text)
+              ),
+          );
+          let text = "";
+          for (let i = 0; i < lines.length; i++) {
+            const l = lines[i],
+              prev = lines[i - 1];
+            if (prev) {
+              const paragraph =
+                prev.column !== l.column ||
+                prev.y - l.y > Math.max(prev.h, l.h) * 1.8;
+              const soft =
+                !paragraph && /\p{L}\u00ad$/u.test(prev.text) && /^\p{L}/u.test(l.text);
+              text += soft ? "" : paragraph ? "\n\n" : "\n";
+              if (soft) text = text.replace(/\u00ad$/, "");
+            }
+            text += l.text;
+          }
+          return text;
+        },
+        key(l, p) {
+          const edge =
+            l.y > p.height * 0.92
+              ? "top"
+              : l.y < p.height * 0.07
+                ? "bottom"
+                : null;
+          return edge ? edge + ":" + l.text.trim().replace(/\d+/g, "#") : null;
+        },
+      };
+      const turkishRepairs = new Map();
+      for (const letter of "ÇĞİÖŞÜçğıöşü") {
+        const bytes = new TextEncoder().encode(letter);
+        for (const damaged of [
+          new TextDecoder("windows-1252").decode(bytes),
+          new TextDecoder("windows-1254").decode(bytes),
+          String.fromCharCode(...bytes),
+        ]) {
+          if (!damaged.includes("�")) turkishRepairs.set(damaged, letter);
+        }
+      }
+      const turkishPairs = [...turkishRepairs.keys()].join("|");
+      const turkishDamage = new RegExp("(?:" + turkishPairs + ")+", "gu");
+      const turkishPair = new RegExp(turkishPairs, "gu");
+      const suspectText = /[�\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]|[ÃÄÅÂ][\u00a0-\u00bf\u0152\u0153\u0160\u0161\u0178\u017d\u017e\u0192\u2000-\u203a\u20ac\u2122]/u;
+      const suspectPdfText = new RegExp(suspectText.source + "|\\p{Co}", "u");
+      function prepareText(text) {
+        return text
+          .replace(/\r\n?/g, "\n")
+          .replace(turkishDamage, (run, offset, source) =>
+            run.length > 2 ||
+            /\p{L}/u.test(source[offset - 1] || "") ||
+            /\p{L}/u.test(source[offset + run.length] || "")
+              ? run.replace(turkishPair, (pair) => turkishRepairs.get(pair))
+              : run,
+          )
+          .replace(/\u00ad/g, "")
+          .normalize("NFC");
+      }
+      const headingKey = (text) => text.trim().toLocaleLowerCase("tr").replace(/ı/g, "i");
+      const prefaceHeading = /^(?:ön\s*söz|preface|foreword)[:.]?$/u;
+      const bodyHeading = /^(?:(?:giriş|introduction|içindekiler|table of contents)[:.]?|(?:bölüm|chapter)\s+(?:1\b|i\b|bir\b|one\b).*|(?:1\.?|i\.?|birinci)\s+bölüm\b.*)$/u;
+      function findPreface(doc) {
+        if (doc.type === "demo") return null;
+        const whole = doc.type === "epub"
+          ? doc.sections.slice(0, 12).findIndex((s) =>
+              s.start < s.end && (s.preface || prefaceHeading.test(headingKey(s.title))),
+            )
+          : -1;
+        if (whole >= 0) {
+          const s = doc.sections[whole];
+          const containsNextHeading = s.text.split("\n").some((line) => bodyHeading.test(headingKey(line)));
+          if (!containsNextHeading && s.end < doc.tokens.length)
+            return { start: s.start, end: s.end, from: whole, to: whole, first: 0, last: s.text.length };
+        }
+        // Require two standalone headings and prose between them before omitting PDF/TXT text.
+        let heading;
+        let hasProse = false;
+        for (let i = 0; i < Math.min(doc.sections.length, 32); i++) {
+          const s = doc.sections[i];
+          for (const line of s.text.slice(0, 64000).matchAll(/[^\n]+/gu)) {
+            const label = headingKey(line[0]);
+            if (!heading && i < 12 && prefaceHeading.test(label)) {
+              heading = { section: i, offset: line.index };
+            } else if (heading && bodyHeading.test(label)) {
+              if (hasProse) {
+                const from = doc.sections[heading.section];
+                const tokenAt = (section, offset) => {
+                  for (let j = section.start; j < section.end; j++)
+                    if (doc.tokens[j].charOffset >= offset) return j;
+                  return section.end;
+                };
+                const start = tokenAt(from, heading.offset);
+                const end = tokenAt(s, line.index);
+                if (start < end && end < doc.tokens.length)
+                  return { start, end, from: heading.section, to: i, first: heading.offset, last: line.index };
+              }
+              heading = null;
+              hasProse = false;
+            } else if (heading && /(?:\p{L}+[\s,]+){2}\p{L}+.*[.!?…][”’"]?\s*$/u.test(line[0])) {
+              hasProse = true;
+            }
+          }
+        }
+        return null;
+      }
+      function bookWithoutPreface(doc) {
+        const { start, end, from, to, first, last } = doc.preface;
+        const tokens = doc.tokens.slice(0, start).concat(doc.tokens.slice(end));
+        const nextIndex = (index) => index - clamp(index - start, 0, end - start);
+        const sections = doc.sections.map((section, i) => {
+          const text = i < from || i > to
+            ? section.text
+            : (i === from ? section.text.slice(0, first) : "") +
+              (i === to ? section.text.slice(last) : "");
+          return {
+            ...section,
+            text,
+            start: nextIndex(section.start),
+            end: nextIndex(section.end),
+          };
+        });
+        return { ...doc, sections, tokens, totalWords: tokens.length, prefaceOmitted: true };
+      }
+      function positionInBook(doc, sourceIndex) {
+        if (!doc.prefaceOmitted) return sourceIndex;
+        const { start, end } = doc.preface;
+        return sourceIndex - clamp(sourceIndex - start, 0, end - start);
+      }
+      function decodeUnicode(bytes, xml = false) {
+        const little = bytes[0] === 255 && bytes[1] === 254;
+        const big = bytes[0] === 254 && bytes[1] === 255;
+        const utf8Bom = bytes[0] === 239 && bytes[1] === 187 && bytes[2] === 191;
+        const encoding =
+          little || (xml && bytes[0] === 60 && bytes[1] === 0)
+            ? "utf-16le"
+            : big || (xml && bytes[0] === 0 && bytes[1] === 60)
+              ? "utf-16be"
+              : "utf-8";
+        try {
+          return {
+            text: new TextDecoder(encoding, { fatal: true }).decode(bytes),
+          };
+        } catch {
+          if (xml || little || big || utf8Bom) throw new Error("Geçersiz Unicode kodlaması.");
+          return {
+            text: new TextDecoder("windows-1254").decode(bytes),
+            issue: "Dosya UTF-8 olarak okunamadı. Türkçe Windows-1254 kodlamasıyla açılan metni kontrol et.",
+          };
+        }
+      }
+      const DocumentParser = {
+        async build(title, type, sections, warnings = [], progress = () => {}) {
+          const doc = {
+            title: prepareText(title),
+            type,
+            sections: [],
+            tokens: [],
+            warnings,
+            review: [],
+          };
+          progress(0.91, "Metin düzenleniyor");
+          const suspicious = type === "pdf" ? suspectPdfText : suspectText;
+          for (let i = 0; i < sections.length; i++) {
+            const s = sections[i];
+            const start = doc.tokens.length;
+            const chunks = [];
+            let textOffset = 0;
+            let excerpt = "";
+            const issues = [...(s.issues || [])];
+            // Yield between bounded text chunks, including a book with one very long paragraph.
+            for (let cursor = 0; cursor < s.text.length; ) {
+              let end = Math.min(cursor + 24000, s.text.length);
+              while (end < s.text.length && !/\s/u.test(s.text[end])) {
+                end++;
+                if (end - cursor > 64000)
+                  throw new Error(
+                    "Dosyada olağan dışı uzun bir kelime var. Metin yapısını kontrol et.",
+                  );
+              }
+              while (end < s.text.length && /\s/u.test(s.text[end])) end++;
+              const text = spaceDashes(prepareText(s.text.slice(cursor, end)));
+              chunks.push(text);
+              const suspect = excerpt ? -1 : text.search(suspicious);
+              if (suspect !== -1) {
+                issues.push("Metinde bozuk olabilecek karakterler var.");
+                excerpt = text.slice(Math.max(0, suspect - 100), suspect + 380).trim();
+              }
+              const tokens = Tokenizer.tokenize(
+                text,
+                i,
+                type === "pdf" ? i + 1 : null,
+              );
+              for (const t of tokens) {
+                t.charOffset += textOffset;
+                t.sourceIndex = doc.tokens.length;
+                doc.tokens.push(t);
+              }
+              textOffset += text.length;
+              if (doc.tokens.length > 1000000)
+                throw new Error(
+                  "Kitap bir milyon kelimelik bellek sınırını aşıyor. Kitabı daha küçük bölümlere ayır.",
+                );
+              cursor = end;
+              if (cursor < s.text.length) await yieldUI();
+            }
+            const section = {
+              title: prepareText(s.title),
+              text: chunks.join(""),
+              start,
+              end: doc.tokens.length,
+              issues,
+              preface: s.preface === true,
+            };
+            if (suspicious.test(section.title))
+              issues.push("Sayfa veya bölüm başlığında bozuk olabilecek karakterler var.");
+            doc.sections.push(section);
+            if (issues.length)
+              doc.review.push({
+                section: i,
+                excerpt: excerpt || section.text.trim().slice(0, 480),
+              });
+            if (i % 8 === 0) {
+              progress(0.91 + 0.07 * ((i + 1) / sections.length), "Metin düzenleniyor");
+              await yieldUI();
+            }
+          }
+          doc.totalWords = doc.tokens.length;
+          if (!doc.totalWords)
+            throw new Error(
+              type === "pdf"
+                ? "PDF metin katmanı bulunamadı. Taranmış sayfalar için OCR gerekiyor; bu sürüm OCR içermiyor."
+                : "Dosyada okunabilir metin bulunamadı.",
+            );
+          doc.preface = findPreface(doc);
+          return doc;
+        },
+        async txt(file, progress, buffer) {
+          const bytes = new Uint8Array(buffer ?? await file.arrayBuffer());
+          let decoded;
+          try {
+            decoded = decodeUnicode(bytes);
+          } catch {
+            throw new Error(
+              "Metin kodlaması okunamadı. Dosyayı UTF-8 olarak kaydedip tekrar aç.",
+            );
+          }
+          const parts = decoded.text.replace(/\r\n?/g, "\n").split(/\n\s*\n/);
+          const sections = [];
+          let group = [];
+          let length = 0;
+          const addGroup = () => {
+            sections.push({
+              title: "Kısım " + (sections.length + 1),
+              text: group.join("\n\n"),
+              issues: decoded.issue && sections.length === 0 ? [decoded.issue] : [],
+            });
+            group = [];
+            length = 0;
+          };
+          for (const p of parts) {
+            group.push(p);
+            length += p.length;
+            if (length > 8000) addGroup();
+          }
+          if (group.length) addGroup();
+          return this.build(file.name, "txt", sections, [], progress);
+        },
+        async pdf(file, progress, buffer) {
+          let pdf;
+          try {
+            const lib = await import(
+              "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.624/build/pdf.mjs"
+            );
+            lib.GlobalWorkerOptions.workerSrc =
+              "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.624/build/pdf.worker.mjs";
+            pdf = await lib.getDocument({
+              data: new Uint8Array(buffer ?? await file.arrayBuffer()),
+              isEvalSupported: false,
+            }).promise;
+            const pages = [];
+            for (let n = 1; n <= pdf.numPages; n++) {
+              const page = await pdf.getPage(n),
+                viewport = page.getViewport({ scale: 1 }),
+                content = await page.getTextContent();
+              pages.push(
+                PDFLayout.lines(content.items, viewport.width, viewport.height),
+              );
+              page.cleanup();
+              progress(
+                (n / pdf.numPages) * 0.85,
+                `${n} / ${pdf.numPages} sayfa işleniyor`,
+              );
+              await yieldUI();
+            }
+            const counts = new Map();
+            for (const p of pages) {
+              const seen = new Set(
+                p.lines.map((l) => PDFLayout.key(l, p)).filter(Boolean),
+              );
+              for (const k of seen) counts.set(k, (counts.get(k) || 0) + 1);
+            }
+            const repeated = new Set(
+              [...counts]
+                .filter(
+                  ([, n]) =>
+                    pages.length >= 3 &&
+                    n >= Math.max(3, Math.ceil(pages.length * 0.6)),
+                )
+                .map(([k]) => k),
+            );
+            const sections = pages.map((p, i) => {
+              const text = PDFLayout.text(p, repeated);
+              const issues = [];
+              if (!text.trim())
+                issues.push("Bu sayfadan okunabilir metin çıkarılamadı.");
+              if (p.columns)
+                issues.push("Birden fazla sütun algılandı. Metnin okuma sırasını kontrol et.");
+              return { title: "Sayfa " + (i + 1), text, issues };
+            });
+            const warnings = [];
+            if (repeated.size)
+              warnings.push(
+                "Tekrarlanan kenar başlıkları ve sayfa numaraları ayıklandı.",
+              );
+            return await this.build(file.name, "pdf", sections, warnings, progress);
+          } catch (e) {
+            if (e.name === "PasswordException")
+              throw new Error(
+                "Bu PDF parola korumalı. Parolası kaldırılmış bir kopyasını aç.",
+              );
+            if (/fetch|import|network/i.test(e.message))
+              throw new Error(
+                "PDF okuyucusu yüklenemedi. İnternet bağlantını kontrol edip yeniden dene.",
+              );
+            throw e;
+          } finally {
+            if (pdf) await pdf.destroy();
+          }
+        },
+        async epub(file, progress, buffer) {
+          if (!window.JSZip)
+            await new Promise((resolve, reject) => {
+              const s = document.createElement("script");
+              s.src =
+                "https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js";
+              s.onload = resolve;
+              s.onerror = () => {
+                s.remove();
+                reject(
+                  new Error(
+                    "EPUB okuyucusu yüklenemedi. Bağlantını kontrol edip tekrar dene.",
+                  ),
+                );
+              };
+              document.head.append(s);
+            });
+          const zip = await JSZip.loadAsync(buffer ?? await file.arrayBuffer());
+          let extracted = 0;
+          const read = async (path) => {
+            const entry = zip.file(path);
+            if (!entry)
+              throw new Error("EPUB içinde gerekli bölüm bulunamadı: " + path);
+            let size = 0;
+            const chunks = [];
+            await new Promise((resolve, reject) => {
+              const stream = entry.internalStream("uint8array");
+              stream
+                .on("data", (chunk) => {
+                  size += chunk.length;
+                  extracted += chunk.length;
+                  if (size > 16 * 1024 * 1024 || extracted > 80 * 1024 * 1024) {
+                    stream.pause();
+                    reject(
+                      new Error(
+                        "EPUB metni güvenli bellek sınırını aşıyor. Daha küçük bir dosya aç.",
+                      ),
+                    );
+                    return;
+                  }
+                  chunks.push(chunk);
+                })
+                .on("end", resolve)
+                .on("error", reject)
+                .resume();
+            });
+            const bytes = new Uint8Array(size);
+            let off = 0;
+            for (const c of chunks) {
+              bytes.set(c, off);
+              off += c.length;
+            }
+            try {
+              return decodeUnicode(bytes, true).text;
+            } catch {
+              const entry = path.split("/").at(-1).slice(0, 100);
+              throw new Error(`EPUB dosyası “${entry}” geçerli UTF-8 veya UTF-16 olarak okunamadı.`);
+            }
+          };
+          const xml = (s) => {
+              const doc = new DOMParser().parseFromString(s, "application/xml");
+              if (doc.querySelector("parsererror"))
+                throw new Error(
+                  "EPUB yapısı okunamadı. Dosya bozuk veya desteklenmeyen biçimde.",
+                );
+              return doc;
+            },
+            all = (d, n) => Array.from(d.getElementsByTagNameNS("*", n));
+          const container = xml(await read("META-INF/container.xml")),
+            root = all(container, "rootfile")[0]?.getAttribute("full-path");
+          if (!root) throw new Error("Geçerli EPUB kitap yapısı bulunamadı.");
+          if (zip.file("META-INF/encryption.xml")) {
+            const enc = xml(await read("META-INF/encryption.xml"));
+            const blocked = all(enc, "EncryptionMethod").some(
+              (x) =>
+                ![
+                  "http://www.idpf.org/2008/embedding",
+                  "http://ns.adobe.com/pdf/enc#RC",
+                ].includes(x.getAttribute("Algorithm")),
+            );
+            if (blocked)
+              throw new Error(
+                "Bu EPUB şifreli veya DRM korumalı. Korumasız bir dosya kullan.",
+              );
+          }
+          const opf = xml(await read(root)),
+            manifest = new Map(
+              all(opf, "item").map((x) => [x.getAttribute("id"), x]),
+            ),
+            spine = all(opf, "itemref").filter(
+              (x) => x.getAttribute("linear") !== "no",
+            ),
+            sections = [];
+          const base = root.slice(0, root.lastIndexOf("/") + 1);
+          for (let i = 0; i < spine.length; i++) {
+            const item = manifest.get(spine[i].getAttribute("idref"));
+            if (!item) throw new Error("EPUB bölüm sıralaması eksik.");
+            const href = item.getAttribute("href");
+            if (!href || /^[a-z]+:/i.test(href))
+              throw new Error(
+                "EPUB harici bölüm içeriyor; yerel metin bulunamadı.",
+              );
+            const path = decodeURIComponent(
+              new URL(href, "https://epub.local/" + base).pathname.slice(1),
+            );
+            const markup = await read(path);
+            // XML parsing is inert: no images, iframes, scripts or external resources are mounted in the live DOM.
+            const chapter = xml(markup);
+            for (const n of chapter.querySelectorAll(
+              "script,style,nav,iframe,object,svg,math,[hidden]",
+            ))
+              n.remove();
+            let text = "";
+            const visit = (node) => {
+              if (node.nodeType === 3) {
+                text += node.nodeValue;
+                return;
+              }
+              if (node.nodeType !== 1) return;
+              const block =
+                /^(p|div|h[1-6]|li|section|article|blockquote|br|tr)$/i.test(
+                  node.localName,
+                );
+              if (block) text += "\n\n";
+              for (const child of node.childNodes) visit(child);
+              if (block) text += "\n\n";
+            };
+            const body = chapter.querySelector("body") || chapter.documentElement;
+            visit(body);
+            const heading = chapter
+              .querySelector("h1,h2,h3,title")
+              ?.textContent.trim();
+            sections.push({
+              title: heading || "Bölüm " + (i + 1),
+              text: text.replace(/\n[\t ]+/g, "\n").replace(/\n{3,}/g, "\n\n"),
+              preface: [body, body.children.length === 1 ? body.firstElementChild : null]
+                .some((node) => node?.getAttributeNS("http://www.idpf.org/2007/ops", "type")
+                  ?.split(/\s+/).includes("preface")),
+            });
+            progress(
+              ((i + 1) / spine.length) * 0.9,
+              `${i + 1} / ${spine.length} bölüm işleniyor`,
+            );
+            await yieldUI();
+          }
+          return this.build(
+            all(opf, "title")[0]?.textContent || file.name,
+            "epub",
+            sections,
+            [],
+            progress,
+          );
+        },
+      };
+      let currentKey = null,
+        currentSourceDoc = null,
+        view = "rsvp",
+        panelOpener = null,
+        lastSave = 0,
+        importing = false;
+      const engine = new PlaybackEngine(renderWord, renderState);
+      function formatTime(ms) {
+        const sec = Math.max(0, Math.ceil(ms / 1000));
+        return Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0");
+      }
+      function notify(message, error = false) {
+        $("notice").hidden = false;
+        $("notice").classList.toggle("error", error);
+        $("noticeText").textContent = message;
+      }
+      function savePosition() {
+        if (currentKey && currentSourceDoc && engine.doc) {
+          const { section, sourceIndex } = engine.doc.tokens[engine.index];
+          SettingsManager.position(currentKey, {
+            index: sourceIndex,
+            elapsed: engine.time(),
+            section,
+            offset: sourceIndex - currentSourceDoc.sections[section].start,
+            omitPreface: engine.doc.prefaceOmitted === true,
+          });
+        }
+      }
+      function renderState(state) {
+        document.body.classList.toggle("playing", state === "PLAYING");
+        $("playIcon").setAttribute(
+          "href",
+          state === "PLAYING" ? "#i-pause" : "#i-play",
+        );
+        $("play").setAttribute(
+          "aria-label",
+          state === "PLAYING"
+            ? "Okumayı duraklat"
+            : state === "FINISHED"
+              ? "Yeniden oku"
+              : "Okumayı başlat",
+        );
+        $("stateText").textContent = {
+          EMPTY: "Kitabını aç",
+          LOADING: "Kitabın hazırlanıyor",
+          READY: "Hazır olduğunda başlat",
+          PLAYING: "Kendi ritminde, kelime kelime.",
+          PAUSED: "Bir nefes. Kaldığın yer burası.",
+          FINISHED: "Bu okumayı tamamladın.",
+          ERROR: "Dosya açılamadı",
+        }[state];
+        $("accessibleStatus").textContent = $("stateText").textContent;
+        for (const id of ["play", "back", "forward", "seek", "sectionsToggle"])
+          $(id).disabled = state === "LOADING" || !engine.doc;
+      }
+      function renderWord() {
+        if (!engine.doc) return;
+        const token = engine.doc.tokens[engine.index];
+        const { left, pivot, right } = token.orp;
+        $("wordLeft").textContent = left;
+        $("wordPivot").textContent = pivot;
+        $("wordRight").textContent = right;
+        fitWord();
+        const total = engine.doc.totalWords,
+          progress =
+            engine.state === "FINISHED" ? 100 : (engine.index / total) * 100;
+        $("seek").max = total - 1;
+        $("seek").value = engine.index;
+        $("seek").style.setProperty("--progress", progress + "%");
+        $("seek").setAttribute(
+          "aria-valuetext",
+          `${engine.index + 1} / ${total} kelime`,
+        );
+        $("percent").textContent = "%" + Math.floor(progress);
+        $("wordCount").textContent =
+          `${(engine.index + 1).toLocaleString("tr")} / ${total.toLocaleString("tr")} kelime`;
+        $("location").textContent =
+          engine.doc.sections[token.section].title +
+          (engine.doc.type === "pdf" ? " / " + engine.doc.sections.length : "");
+        $("remaining").textContent = formatTime(engine.remaining()) + " kaldı";
+        $("elapsed").textContent = "Okunan süre " + formatTime(engine.time());
+        if (view === "text") renderContext();
+        if (performance.now() - lastSave > 4000) {
+          savePosition();
+          lastSave = performance.now();
+        }
+      }
+      const measureCanvas = document.createElement("canvas"),
+        measure = measureCanvas.getContext("2d");
+      function fitWord() {
+        if (!engine.doc || $("stage").hidden) return;
+        const width = $("stage").clientWidth;
+        if (!width) return;
+        const parts = engine.doc.tokens[engine.index].orp;
+        const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+        const base = settings.size * (rem / 16);
+        measure.font = base + "px " + getComputedStyle($("word")).fontFamily;
+        measure.fontKerning = "none";
+        const pivotWidth = measure.measureText(parts.pivot).width,
+          reach = Math.max(
+            measure.measureText(parts.left).width + pivotWidth / 2,
+            measure.measureText(parts.right).width + pivotWidth / 2,
+          );
+        const available = Math.max(1, width / 2 - 10);
+        const size = Math.min(base, (base * available) / Math.max(1, reach));
+        $("word").style.fontSize = size + "px";
+      }
+      function renderContext() {
+        const token = engine.doc.tokens[engine.index],
+          section = engine.doc.sections[token.section],
+          start = Math.max(section.start, engine.index - 70),
+          end = Math.min(section.end, start + 220);
+        $("context").replaceChildren();
+        let p = document.createElement("p");
+        $("context").append(p);
+        for (let i = start; i < end; i++) {
+          const t = engine.doc.tokens[i],
+            b = document.createElement("button");
+          b.textContent = t.text;
+          b.classList.toggle("current", i === engine.index);
+          b.setAttribute("aria-label", t.text + " kelimesinden devam et");
+          b.onclick = () => engine.seek(i);
+          p.append(b, document.createTextNode(" "));
+          if (t.paragraphBreak) {
+            p = document.createElement("p");
+            $("context").append(p);
+          }
+        }
+      }
+      function setView(next) {
+        engine.pause();
+        view = next;
+        $("stage").hidden = next === "text";
+        $("context").hidden = next !== "text";
+        $("readerNote").hidden = next === "text";
+        $("readerHint").hidden = next === "text";
+        $("rsvpTab").setAttribute("aria-pressed", next === "rsvp");
+        $("textTab").setAttribute("aria-pressed", next === "text");
+        if (next === "text") renderContext();
+        else fitWord();
+      }
+      function closePanels() {
+        for (const id of ["settingsPanel", "sectionsPanel"])
+          $(id).hidden = true;
+        $("settingsToggle").setAttribute("aria-expanded", "false");
+        $("sectionsToggle").setAttribute("aria-expanded", "false");
+        panelOpener?.focus();
+        panelOpener = null;
+      }
+      function togglePanel(id, opener) {
+        const open = $(id).hidden;
+        closePanels();
+        if (open) {
+          engine.pause();
+          $(id).hidden = false;
+          panelOpener = opener;
+          opener.setAttribute("aria-expanded", "true");
+          $(id).querySelector("button").focus();
+        }
+      }
+      function renderSections() {
+        $("chapterList").replaceChildren();
+        $("prefaceSetting").hidden = !currentSourceDoc?.preface;
+        $("omitPreface").checked = engine.doc.prefaceOmitted === true;
+        $("sectionsTitle").textContent =
+          engine.doc.type === "pdf" ? "Sayfalar" : "İçindekiler";
+        engine.doc.sections.forEach((s, i) => {
+          const b = document.createElement("button");
+          const removed = engine.doc.prefaceOmitted &&
+            s.start === s.end && currentSourceDoc.sections[i].start < currentSourceDoc.sections[i].end;
+          b.textContent = s.title + (removed ? " · Önsöz çıkarıldı" : s.start === s.end ? " · Metin yok" : "");
+          b.disabled = s.start === s.end;
+          b.classList.toggle(
+            "active",
+            i === engine.doc.tokens[engine.index].section,
+          );
+          b.onclick = () => {
+            engine.seek(s.start);
+            closePanels();
+          };
+          $("chapterList").append(b);
+        });
+      }
+      function luminance(hex) {
+        const rgb = hex.slice(1).match(/../g).map((pair) => {
+          const value = parseInt(pair, 16) / 255;
+          return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+        });
+        return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+      }
+      function applySettings() {
+        const root = document.documentElement;
+        root.dataset.theme = settings.theme;
+        const fonts = {
+          serif: "Georgia,'Times New Roman',serif",
+          sans: "'Segoe UI',sans-serif",
+          mono: "Consolas,monospace",
+        };
+        root.style.setProperty("--reader-font", fonts[settings.font] || fonts.serif);
+        root.style.setProperty("--context-size", settings.size / 48 + "rem");
+        const colors = getComputedStyle(root);
+        const defaultAccent = colors.getPropertyValue("--accent").trim();
+        const contrastTheme = settings.theme === "contrast";
+        const custom = /^#[0-9a-f]{6}$/i.test(settings.accent || "") ? settings.accent : null;
+        let accent = defaultAccent;
+        if (custom && !contrastTheme) {
+          const a = luminance(custom);
+          const b = luminance(colors.getPropertyValue("--bg").trim());
+          if ((Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05) >= 4.5) accent = custom;
+        }
+        root.style.setProperty("--word-accent", accent);
+        document.body.classList.toggle("no-guides", !settings.guides);
+        $("wpm").value = settings.wpm;
+        for (const id of ["font", "size", "pauseScale"]) $(id).value = settings[id];
+        for (const id of ["smart", "punctuation", "guides"])
+          $(id).checked = settings[id];
+        $("sizeValue").textContent = settings.size + " px";
+        $("pauseScale").disabled = !settings.punctuation;
+        $("pauseScale").setAttribute("aria-valuetext", "Yüzde " + settings.pauseScale);
+        $("pauseValue").textContent = "%" + settings.pauseScale;
+        $("accent").disabled = contrastTheme;
+        $("accent").value = contrastTheme ? defaultAccent : custom || defaultAccent;
+        const accentHelp = $("accentHelp");
+        accentHelp.textContent = contrastTheme
+          ? "Yüksek Kontrast temasında odak harfi sarıdır."
+          : custom && accent !== custom
+            ? "Seçilen renk zeminde yeterince belirgin olmadığı için tema rengi gösteriliyor."
+            : "";
+        accentHelp.hidden = !accentHelp.textContent;
+        document
+          .querySelectorAll("button[data-theme]")
+          .forEach((b) =>
+            b.setAttribute("aria-pressed", b.dataset.theme === settings.theme),
+          );
+        SettingsManager.save(settings);
+        fitWord();
+      }
+      function changeWpm(value) {
+        settings.wpm = clamp(Math.round(Number(value) || 300), 100, 1000);
+        $("wpm").value = settings.wpm;
+        SettingsManager.save(settings);
+        if (engine.doc)
+          $("remaining").textContent =
+            formatTime(engine.remaining()) + " kaldı";
+      }
+      function reviewImport(doc) {
+        const dialog = $("importReview");
+        const select = $("reviewSection");
+        $("reviewBook").textContent = doc.title;
+        const options = document.createDocumentFragment();
+        for (const [index, { section }] of doc.review.entries()) {
+          const option = document.createElement("option");
+          option.value = index;
+          option.textContent = doc.sections[section].title;
+          options.append(option);
+        }
+        select.replaceChildren(options);
+        const showSample = () => {
+          const { section, excerpt } = doc.review[select.selectedIndex];
+          $("reviewIssue").textContent = doc.sections[section].issues.join(" ");
+          $("reviewSample").textContent = excerpt || "Bu sayfada gösterilecek metin yok.";
+          $("reviewSample").scrollTop = 0;
+        };
+        select.onchange = showSample;
+        showSample();
+        dialog.returnValue = "cancel";
+        return new Promise((resolve) => {
+          dialog.addEventListener("close", () => {
+            select.onchange = null;
+            select.replaceChildren();
+            $("reviewBook").textContent = "";
+            $("reviewIssue").textContent = "";
+            $("reviewSample").textContent = "";
+            resolve(dialog.returnValue === "accept");
+          }, { once: true });
+          dialog.showModal();
+        });
+      }
+      async function importFile(file) {
+        if (!file || importing) return;
+        const ext = file.name.split(".").pop().toLowerCase();
+        if (!["pdf", "epub", "txt"].includes(ext)) {
+          notify("Bu dosya türü desteklenmiyor. PDF, EPUB veya TXT seç.", true);
+          return;
+        }
+        if (file.size > 100 * 1024 * 1024) {
+          notify(
+            "Dosya 100 MB sınırını aşıyor. Daha küçük bir kopyasını aç.",
+            true,
+          );
+          return;
+        }
+        savePosition();
+        engine.pause();
+        closePanels();
+        const previousState = engine.state;
+        const previousNotice = $("notice").hidden
+          ? null
+          : { message: $("noticeText").textContent, error: $("notice").classList.contains("error") };
+        importing = true;
+        engine.setState("LOADING");
+        $("loadingBar").hidden = false;
+        const progress = (ratio, message) => {
+          $("loadProgress").style.width = ratio * 100 + "%";
+          notify(file.name + " · " + message);
+        };
+        progress(0.02, "Kitap hazırlanıyor");
+        try {
+          const buffer = await file.arrayBuffer();
+          const digest = await crypto.subtle.digest("SHA-256", buffer);
+          const key = Array.from(new Uint8Array(digest), (b) =>
+            b.toString(16).padStart(2, "0"),
+          ).join("");
+          const source = await DocumentParser[ext](file, progress, buffer);
+          if (source.review.length && !(await reviewImport(source))) {
+            engine.setState(previousState);
+            if (previousNotice) notify(previousNotice.message, previousNotice.error);
+            else $("notice").hidden = true;
+            return;
+          }
+          progress(1, "Okumaya hazır");
+          currentKey = key;
+          currentSourceDoc = source;
+          const saved = SettingsManager.position(key);
+          const section = Number.isInteger(saved?.section) && source.sections[saved.section];
+          const index = section && section.end > section.start && Number.isInteger(saved.offset)
+            ? clamp(section.start + saved.offset, section.start, section.end - 1)
+            : Math.trunc(Number(saved?.index) || 0);
+          const doc = source.preface && saved?.omitPreface ? bookWithoutPreface(source) : source;
+          engine.load(
+            doc,
+            positionInBook(doc, index),
+            Number(saved?.elapsed) || 0,
+          );
+          $("bookTitle").textContent = doc.title;
+          $("bookTitle").title = doc.title;
+          $("bookMeta").textContent =
+            ext.toUpperCase() +
+            " · " +
+            (ext === "pdf"
+              ? doc.sections.length + " sayfa"
+              : doc.sections.length + " bölüm") +
+            " · " +
+            (file.size / 1024 / 1024 < 1
+              ? Math.ceil(file.size / 1024) + " KB"
+              : (file.size / 1024 / 1024).toFixed(1) + " MB");
+          $("dropHint").hidden = true;
+          document.body.classList.add("has-book");
+          $("readerNote").textContent = "Bir kelime. Tam odak.";
+          setView("rsvp");
+          notify([
+            "Okumaya hazır.",
+            ...doc.warnings,
+            source.preface && !doc.prefaceOmitted ? "Önsözü bölüm menüsünden çıkarabilirsin." : "",
+            index > 0 ? "Kaldığın yerden devam edebilirsin." : "",
+          ].filter(Boolean).join(" "));
+          savePosition();
+        } catch (e) {
+          engine.setState(engine.doc ? "PAUSED" : "ERROR");
+          notify(
+            e.message &&
+              e.message.length < 280 &&
+              !/Invalid PDF|central directory|end of data|invalid xml|unexpected|Cannot read/i.test(
+                e.message,
+              )
+              ? e.message
+              : "Dosya okunamadı. Dosyanın sağlam ve desteklenen biçimde olduğundan emin olup tekrar dene.",
+            true,
+          );
+        } finally {
+          importing = false;
+          $("loadingBar").hidden = true;
+          $("fileInput").value = "";
+        }
+      }
+      function toggleFocus(force) {
+        const on = force ?? !document.body.classList.contains("focus");
+        document.body.classList.toggle("focus", on);
+        $("focusExit").hidden = !on;
+        $("focusToggle").setAttribute("aria-pressed", on);
+        closePanels();
+      }
+      function togglePlay() {
+        if (importing) return;
+        if (engine.state === "PLAYING") {
+          engine.pause();
+          savePosition();
+        } else {
+          closePanels();
+          if (view !== "rsvp") setView("rsvp");
+          engine.play();
+        }
+      }
+      document.querySelectorAll("[data-open-file]").forEach((b) => {
+        b.setAttribute("aria-label", "Kitap dosyası aç");
+        b.onclick = () => {
+          engine.pause();
+          $("fileInput").click();
+        };
+      });
+      $("fileInput").onchange = (e) => importFile(e.target.files[0]);
+      $("play").onclick = togglePlay;
+      $("back").onclick = () => engine.seek(engine.index - 10);
+      $("forward").onclick = () => engine.seek(engine.index + 10);
+      $("seek").oninput = (e) => engine.seek(Number(e.target.value));
+      $("wpm").onchange = (e) => changeWpm(e.target.value);
+      $("slower").onclick = () => changeWpm(settings.wpm - 25);
+      $("faster").onclick = () => changeWpm(settings.wpm + 25);
+      $("settingsToggle").onclick = () =>
+        togglePanel("settingsPanel", $("settingsToggle"));
+      $("sectionsToggle").onclick = () => {
+        if (!engine.doc) return;
+        renderSections();
+        togglePanel("sectionsPanel", $("sectionsToggle"));
+      };
+      document
+        .querySelectorAll("[data-close-panel]")
+        .forEach((b) => (b.onclick = closePanels));
+      $("dismissNotice").onclick = () => ($("notice").hidden = true);
+      $("omitPreface").onchange = () => {
+        if (!currentSourceDoc?.preface || importing) return;
+        const sourceIndex = engine.doc.tokens[engine.index].sourceIndex;
+        const doc = $("omitPreface").checked
+          ? bookWithoutPreface(currentSourceDoc)
+          : currentSourceDoc;
+        engine.load(doc, positionInBook(doc, sourceIndex), engine.time());
+        renderSections();
+        savePosition();
+        notify(doc.prefaceOmitted ? "Önsöz okuma metninden çıkarıldı." : "Önsöz okuma metnine geri eklendi.");
+      };
+      $("textTab").onclick = () => setView("text");
+      $("rsvpTab").onclick = () => setView("rsvp");
+      $("focusToggle").onclick = () => toggleFocus();
+      $("focusExit").onclick = () => toggleFocus(false);
+      document.querySelectorAll("button[data-theme]").forEach(
+        (b) =>
+          (b.onclick = () => {
+            settings.theme = b.dataset.theme;
+            applySettings();
+          }),
+      );
+      for (const id of [
+        "font",
+        "size",
+        "smart",
+        "punctuation",
+        "pauseScale",
+        "guides",
+        "accent",
+      ])
+        $(id).oninput = () => {
+          settings[id] =
+            $(id).type === "checkbox"
+              ? $(id).checked
+              : $(id).type === "range"
+                ? Number($(id).value)
+                : $(id).value;
+          applySettings();
+          if (id === "smart" || id === "punctuation" || id === "pauseScale") {
+            engine.reweight();
+            renderWord();
+          }
+        };
+      $("resetSettings").onclick = () => {
+        settings = { ...DEFAULTS };
+        applySettings();
+        engine.reweight();
+        renderWord();
+      };
+      document.addEventListener("keydown", (e) => {
+        if ($("importReview").open) return;
+        if (e.key === "Escape") {
+          closePanels();
+          toggleFocus(false);
+          return;
+        }
+        if (
+          e.target.closest("input,select,textarea,[contenteditable=true]") ||
+          e.ctrlKey ||
+          e.altKey ||
+          e.metaKey
+        )
+          return;
+        if (e.code === "Space") {
+          if (e.target.closest("button")) return;
+          e.preventDefault();
+          if (!e.repeat) togglePlay();
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          e.preventDefault();
+          engine.seek(
+            engine.index +
+              (e.key === "ArrowLeft" ? -1 : 1) * (e.shiftKey ? 50 : 10),
+          );
+        } else if (e.key.toLowerCase() === "f") toggleFocus();
+      });
+      let dragDepth = 0;
+      window.addEventListener("dragenter", (e) => {
+        if (e.dataTransfer?.types.includes("Files")) {
+          e.preventDefault();
+          dragDepth++;
+          $("dropOverlay").hidden = false;
+        }
+      });
+      window.addEventListener("dragover", (e) => e.preventDefault());
+      window.addEventListener("dragleave", () => {
+        if (--dragDepth <= 0) {
+          dragDepth = 0;
+          $("dropOverlay").hidden = true;
+        }
+      });
+      window.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dragDepth = 0;
+        $("dropOverlay").hidden = true;
+        if (e.dataTransfer.files.length > 1)
+          notify("Tek seferde bir kitap açabilirsin. İlk dosya seçildi.");
+        importFile(e.dataTransfer.files[0]);
+      });
+      window.addEventListener("resize", fitWord);
+      new ResizeObserver(fitWord).observe($("stage"));
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          engine.pause();
+          savePosition();
+        }
+      });
+      window.addEventListener("pagehide", () => {
+        engine.pause();
+        savePosition();
+      });
+      const DEMO =
+        "Odaklan.\n\nOkumak, başka bir düşünceye yer açmaktır. Bazen tek ihtiyacımız, sayfanın gürültüsünden uzaklaşmak ve bir kelimede kalmaktır.\n\nOkufast kelimeleri sırayla, aynı odak noktasında gösterir. Renkli harfe bak; kelimenin geri kalanı onun etrafında değişsin. Başlangıç için dakikada 300 kelimeyi deneyebilirsin. Hızını, anladığını hissedeceğin bir ritme göre ayarla.\n\nVirgüllerde kısa bir nefes, cümlelerin sonunda biraz daha uzun bir duraklama vardır. Akıllı ritim, uzun kelimelere de zaman tanır. İstersen ayarlardan molaları kapatıp sabit bir hızda okuyabilirsin.\n\nBir düşünceyi yeniden okumak istediğinde duraklat. On kelime geri git ya da Metin görünümünü aç. Bir kelimeyi seçtiğinde okumaya tam oradan devam edebilirsin.\n\nKendi kitabını açmaya hazır mısın? PDF, EPUB veya TXT dosyanı bu pencereye sürükle. İçeriği sunucuya gönderilmez; bu tarayıcıda işlenir.\n\nHız bir yarış olmak zorunda değil. Önemli olan, okuduklarının sende bıraktığı iz.";
+      applySettings();
+      DocumentParser.build("Okumaya bir başlangıç", "demo", [
+        { title: "Örnek metin", text: DEMO },
+      ]).then((doc) => engine.load(doc));
+      // Deliberate test seam: pure engines and local file import, no external services.
+      window.Okufast = {
+        ORPEngine,
+        Tokenizer,
+        TimingEngine,
+        PlaybackEngine,
+        PDFLayout,
+        DocumentParser,
+        engine,
+        importFile,
+        get settings() {
+          return settings;
+        },
+      };
+    </script>
+  </body>
 </html>
