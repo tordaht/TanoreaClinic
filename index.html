@@ -2589,7 +2589,8 @@
           dialog.showModal();
         });
       }
-      async function importFile(file) {
+      let startupRequest = null;
+      async function importFile(file, { bundled = false } = {}) {
         if (!file || importing) return;
         const ext = file.name.split(".").pop().toLowerCase();
         if (!["pdf", "epub", "txt"].includes(ext)) {
@@ -2603,6 +2604,8 @@
           );
           return;
         }
+        startupRequest?.abort();
+        startupRequest = null;
         savePosition();
         engine.pause();
         closePanels();
@@ -2625,7 +2628,7 @@
             b.toString(16).padStart(2, "0"),
           ).join("");
           const source = await DocumentParser[ext](file, progress, buffer);
-          if (source.review.length && !(await reviewImport(source))) {
+          if (!bundled && source.review.length && !(await reviewImport(source))) {
             engine.setState(previousState);
             if (previousNotice) notify(previousNotice.message, previousNotice.error);
             else $("notice").hidden = true;
@@ -2664,6 +2667,9 @@
           notify([
             "Okumaya hazır.",
             ...doc.warnings,
+            bundled && source.review.length
+              ? `${source.review.length} sayfa için Metin görünümünde kontrol önerilir.`
+              : "",
             source.preface && !doc.prefaceOmitted ? "Önsözü bölüm menüsünden çıkarabilirsin." : "",
             index > 0 ? "Kaldığın yerden devam edebilirsin." : "",
           ].filter(Boolean).join(" "));
@@ -2843,10 +2849,42 @@
       });
       const DEMO =
         "Odaklan.\n\nOkumak, başka bir düşünceye yer açmaktır. Bazen tek ihtiyacımız, sayfanın gürültüsünden uzaklaşmak ve bir kelimede kalmaktır.\n\nOkufast kelimeleri sırayla, aynı odak noktasında gösterir. Renkli harfe bak; kelimenin geri kalanı onun etrafında değişsin. Başlangıç için dakikada 300 kelimeyi deneyebilirsin. Hızını, anladığını hissedeceğin bir ritme göre ayarla.\n\nVirgüllerde kısa bir nefes, cümlelerin sonunda biraz daha uzun bir duraklama vardır. Akıllı ritim, uzun kelimelere de zaman tanır. İstersen ayarlardan molaları kapatıp sabit bir hızda okuyabilirsin.\n\nBir düşünceyi yeniden okumak istediğinde duraklat. On kelime geri git ya da Metin görünümünü aç. Bir kelimeyi seçtiğinde okumaya tam oradan devam edebilirsin.\n\nKendi kitabını açmaya hazır mısın? PDF, EPUB veya TXT dosyanı bu pencereye sürükle. İçeriği sunucuya gönderilmez; bu tarayıcıda işlenir.\n\nHız bir yarış olmak zorunda değil. Önemli olan, okuduklarının sende bıraktığı iz.";
+      async function loadDemo() {
+        const doc = await DocumentParser.build("Okumaya bir başlangıç", "demo", [
+          { title: "Örnek metin", text: DEMO },
+        ]);
+        if (!importing && !engine.doc) engine.load(doc);
+      }
+      async function openStartupBook() {
+        if (location.origin !== "https://tordaht.github.io" ||
+            !location.pathname.startsWith("/TanoreaClinic/")) {
+          await loadDemo();
+          return;
+        }
+        const request = new AbortController();
+        startupRequest = request;
+        engine.setState("LOADING");
+        $("loadingBar").hidden = false;
+        $("loadProgress").style.width = "2%";
+        notify("Yerdeniz indiriliyor…");
+        try {
+          const response = await fetch("./yerdeniz.pdf", { signal: request.signal });
+          if (!response.ok) throw new Error("PDF download failed");
+          const blob = await response.blob();
+          if (startupRequest !== request) return;
+          startupRequest = null;
+          await importFile(new File([blob], "Yerdeniz.pdf", { type: "application/pdf" }), { bundled: true });
+          if (!engine.doc) await loadDemo();
+        } catch {
+          if (request.signal.aborted) return;
+          startupRequest = null;
+          $("loadingBar").hidden = true;
+          notify("Yerdeniz indirilemedi. Sayfayı yenileyebilir veya Kitap aç ile bir dosya seçebilirsin.", true);
+          await loadDemo();
+        }
+      }
       applySettings();
-      DocumentParser.build("Okumaya bir başlangıç", "demo", [
-        { title: "Örnek metin", text: DEMO },
-      ]).then((doc) => engine.load(doc));
+      openStartupBook();
       // Deliberate test seam: pure engines and local file import, no external services.
       window.Okufast = {
         ORPEngine,
