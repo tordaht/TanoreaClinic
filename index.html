@@ -279,6 +279,50 @@
         justify-content: center;
         position: relative;
       }
+      .reading-trail {
+        width: min(740px, 100%);
+        margin: 12px auto 0;
+        padding: 6px 12px;
+        border: 1px solid var(--control-line);
+        border-radius: 7px;
+        background: var(--paper);
+      }
+      .trail-row {
+        display: grid;
+        grid-template-columns: 3.4rem minmax(0, 1fr);
+        align-items: baseline;
+        min-height: 44px;
+        color: var(--muted);
+      }
+      .trail-label { font-size: .7rem; align-self: center; }
+      .trail-words {
+        font-family: var(--reader-font);
+        font-size: clamp(.875rem, calc(var(--context-size) * .65), 1.25rem);
+        line-height: 1.6;
+        white-space: nowrap;
+        overflow: hidden;
+        min-width: 0;
+      }
+      .trail-words button {
+        font: inherit;
+        color: inherit;
+        padding: 0 1px;
+        min-height: 44px;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        text-align: start;
+        border-radius: 3px;
+      }
+      .trail-words button:hover { background: var(--soft); }
+      .trail-row.active { color: var(--ink); }
+      .trail-words [aria-current="true"] {
+        background: var(--button);
+        color: var(--on-button);
+      }
+      body.focus .reading-trail { display: none; }
       .reader-note {
         color: var(--muted);
         font-size: 13px;
@@ -1025,6 +1069,9 @@
         }
       }
       @media (orientation: landscape) and (max-height: 450px) {
+        .reading-trail { margin-top: 0; padding-block: 2px; }
+        .trail-row, .trail-words button { min-height: 24px; }
+        .trail-words { font-size: .875rem; }
         .topbar {
           height: auto;
           min-height: 54px;
@@ -1061,6 +1108,20 @@
           margin-block: 0;
           padding-block: 0;
         }
+      }
+      @media (orientation: landscape) and (max-height: 450px) {
+        .app { display: flex; flex-direction: column; }
+        .topbar { min-height: 44px; }
+        .themes { padding: 0; }
+        .reading-trail { padding-block: 0; }
+        .document-bar { order: 1; }
+        main { order: 2; }
+        .notice { order: 3; }
+        .notice.error, body.loading .notice { order: 1; }
+        .footer { order: 4; }
+        .reader, body.has-book .reader { height: 96px; min-height: 96px; }
+        .stage { height: 96px; }
+        .controls { padding-top: 0; }
       }
     </style>
   </head>
@@ -1211,6 +1272,11 @@
         </button>
       </div>
       <main>
+        <section class="reading-trail" id="readingTrail" aria-label="Okuma takibi; kelimeye dokunarak geri dön">
+          <div class="trail-row"><span class="trail-label">Önceki</span><div class="trail-words" id="trailPrevious"></div></div>
+          <div class="trail-row active"><span class="trail-label">Şimdi</span><div class="trail-words" id="trailCurrent"></div></div>
+          <div class="trail-row"><span class="trail-label">Sonraki</span><div class="trail-words" id="trailNext"></div></div>
+        </section>
         <section class="reader" aria-label="Okuyucu">
           <p class="reader-note" id="readerNote">
             Gözün merkezde kalsın.<br />Kelimeler sana gelsin.
@@ -1443,7 +1509,7 @@
         </div>
       </form>
     </dialog>
-    <input id="fileInput" type="file" accept=".pdf,.epub,.txt" hidden />
+    <input id="fileInput" type="file" accept=".pdf,.epub,.txt,.okufast" hidden />
     <div class="drop-overlay" id="dropOverlay" hidden>
       <p>Kitabını buraya bırak.</p>
     </div>
@@ -2054,6 +2120,22 @@
           doc.preface = findPreface(doc);
           return doc;
         },
+        async okufast(file, progress, buffer) {
+          const book = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(buffer ?? await file.arrayBuffer()));
+          if (book.format !== "okufast-book" || book.version !== 1 ||
+              typeof book.title !== "string" || !Array.isArray(book.sections) ||
+              !book.sections.length || book.sections.length > 10000 ||
+              !book.sections.every(s => typeof s.title === "string" && typeof s.text === "string"))
+            throw new Error("Hazır kitap biçimi okunamadı. Geçerli bir .okufast dosyası seç.");
+          const doc = await this.build(book.title, "pdf", book.sections, [], progress);
+          doc.prepared = true;
+          doc.revision = typeof book.revision === "string" ? book.revision : "1";
+          // The source identity lets an existing PDF position survive conversion.
+          doc.sourceKey = /^[a-f0-9]{64}$/.test(book.sourceSha256) ? book.sourceSha256 : null;
+          doc.legacyStarts = Array.isArray(book.legacyStarts) ? book.legacyStarts : null;
+          doc.legacyMap = Array.isArray(book.legacyMap) ? book.legacyMap : null;
+          return doc;
+        },
         async txt(file, progress, buffer) {
           const bytes = new Uint8Array(buffer ?? await file.arrayBuffer());
           let decoded;
@@ -2336,10 +2418,12 @@
             section,
             offset: sourceIndex - currentSourceDoc.sections[section].start,
             omitPreface: engine.doc.prefaceOmitted === true,
+            revision: currentSourceDoc.revision || null,
           });
         }
       }
       function renderState(state) {
+        document.body.classList.toggle("loading", state === "LOADING");
         document.body.classList.toggle("playing", state === "PLAYING");
         $("playIcon").setAttribute(
           "href",
@@ -2393,6 +2477,7 @@
         $("remaining").textContent = formatTime(engine.remaining()) + " kaldı";
         $("elapsed").textContent = "Okunan süre " + formatTime(engine.time());
         if (view === "text") renderContext();
+        else renderTrail();
         if (performance.now() - lastSave > 4000) {
           savePosition();
           lastSave = performance.now();
@@ -2417,6 +2502,69 @@
         const available = Math.max(1, width / 2 - 10);
         const size = Math.min(base, (base * available) / Math.max(1, reach));
         $("word").style.fontSize = size + "px";
+      }
+      let trailCache = { doc: null, key: "", sections: new Map(), rowKey: "" };
+      function renderTrail() {
+        if (!engine.doc || view !== "rsvp" || $("readingTrail").hidden || document.body.classList.contains("focus")) return;
+        const slot = $("trailCurrent"), width = slot.clientWidth;
+        if (!width) return;
+        const css = getComputedStyle(slot), key = width + ":" + css.font;
+        const doc = engine.doc;
+        if (trailCache.doc !== doc || trailCache.key !== key)
+          trailCache = { doc, key, sections: new Map(), rowKey: "" };
+        const rowsFor = sectionIndex => {
+          if (trailCache.sections.has(sectionIndex)) return trailCache.sections.get(sectionIndex);
+          const section = doc.sections[sectionIndex], rows = [];
+          if (!section) return rows;
+          measure.font = css.font;
+          measure.fontKerning = "auto";
+          const space = measure.measureText(" ").width;
+          let start = section.start, used = 0;
+          for (let i = start; i < section.end; i++) {
+            const w = measure.measureText(doc.tokens[i].text).width + 2;
+            if (i > start && used + space + w > width - 2) {
+              rows.push([start, i]); start = i; used = 0;
+            }
+            used += (i > start ? space : 0) + w;
+            if (doc.tokens[i].paragraphBreak) { rows.push([start, i + 1]); start = i + 1; used = 0; }
+          }
+          if (start < section.end) rows.push([start, section.end]);
+          trailCache.sections.set(sectionIndex, rows);
+          return rows;
+        };
+        const sectionIndex = doc.tokens[engine.index].section;
+        const rows = rowsFor(sectionIndex);
+        const row = rows.findIndex(([a, b]) => engine.index >= a && engine.index < b);
+        const adjacent = direction => {
+          for (let s = sectionIndex + direction; s >= 0 && s < doc.sections.length; s += direction) {
+            const r = rowsFor(s);
+            if (r.length) return direction < 0 ? r.at(-1) : r[0];
+          }
+          return null;
+        };
+        const shown = [rows[row - 1] || adjacent(-1), rows[row], rows[row + 1] || adjacent(1)];
+        const rowKey = shown.map(r => r?.join(":") || "empty").join("|");
+        if (trailCache.rowKey !== rowKey) {
+          trailCache.rowKey = rowKey;
+          ["trailPrevious", "trailCurrent", "trailNext"].forEach((id, n) => {
+            const root = $(id), range = shown[n];
+            root.replaceChildren();
+            if (!range) { root.textContent = n === 0 ? "Kitabın başlangıcı" : "Kitabın sonu"; return; }
+            for (let i = range[0]; i < range[1]; i++) {
+              const b = document.createElement("button");
+              b.textContent = doc.tokens[i].text;
+              b.title = b.textContent;
+              b.dataset.index = i;
+              b.setAttribute("aria-label", b.textContent + " kelimesine dön ve duraklat");
+              b.onclick = () => { engine.pause(); engine.seek(i); };
+              root.append(b, document.createTextNode(" "));
+            }
+          });
+        }
+        for (const b of $("readingTrail").querySelectorAll("button")) {
+          if (Number(b.dataset.index) === engine.index) b.setAttribute("aria-current", "true");
+          else b.removeAttribute("aria-current");
+        }
       }
       function renderContext() {
         const token = engine.doc.tokens[engine.index],
@@ -2445,12 +2593,13 @@
         view = next;
         $("stage").hidden = next === "text";
         $("context").hidden = next !== "text";
+        $("readingTrail").hidden = next === "text";
         $("readerNote").hidden = next === "text";
         $("readerHint").hidden = next === "text";
         $("rsvpTab").setAttribute("aria-pressed", next === "rsvp");
         $("textTab").setAttribute("aria-pressed", next === "text");
         if (next === "text") renderContext();
-        else fitWord();
+        else { fitWord(); renderTrail(); }
       }
       function closePanels() {
         for (const id of ["settingsPanel", "sectionsPanel"])
@@ -2593,8 +2742,8 @@
       async function importFile(file, { bundled = false } = {}) {
         if (!file || importing) return;
         const ext = file.name.split(".").pop().toLowerCase();
-        if (!["pdf", "epub", "txt"].includes(ext)) {
-          notify("Bu dosya türü desteklenmiyor. PDF, EPUB veya TXT seç.", true);
+        if (!["pdf", "epub", "txt", "okufast"].includes(ext)) {
+          notify("Bu dosya türü desteklenmiyor. PDF, EPUB, TXT veya Okufast kitabı seç.", true);
           return;
         }
         if (file.size > 100 * 1024 * 1024) {
@@ -2624,10 +2773,11 @@
         try {
           const buffer = await file.arrayBuffer();
           const digest = await crypto.subtle.digest("SHA-256", buffer);
-          const key = Array.from(new Uint8Array(digest), (b) =>
+          let key = Array.from(new Uint8Array(digest), (b) =>
             b.toString(16).padStart(2, "0"),
           ).join("");
           const source = await DocumentParser[ext](file, progress, buffer);
+          key = source.sourceKey || key;
           if (!bundled && source.review.length && !(await reviewImport(source))) {
             engine.setState(previousState);
             if (previousNotice) notify(previousNotice.message, previousNotice.error);
@@ -2638,9 +2788,19 @@
           currentKey = key;
           currentSourceDoc = source;
           const saved = SettingsManager.position(key);
-          const section = Number.isInteger(saved?.section) && source.sections[saved.section];
-          const index = section && section.end > section.start && Number.isInteger(saved.offset)
-            ? clamp(section.start + saved.offset, section.start, section.end - 1)
+          let savedSection = saved?.section, savedOffset = saved?.offset;
+          if (source.prepared && saved && saved.revision !== source.revision && source.legacyMap) {
+            if (!Number.isInteger(savedSection) && Number.isInteger(saved.index) && source.legacyStarts) {
+              savedSection = source.legacyStarts.findLastIndex(n => n <= saved.index);
+              savedOffset = saved.index - source.legacyStarts[savedSection];
+            }
+            const map = source.legacyMap[savedSection];
+            if (Array.isArray(map) && Number.isInteger(savedOffset))
+              savedOffset = map[clamp(savedOffset, 0, map.length - 1)] ?? 0;
+          }
+          const section = Number.isInteger(savedSection) && source.sections[savedSection];
+          const index = section && section.end > section.start && Number.isInteger(savedOffset)
+            ? clamp(section.start + savedOffset, section.start, section.end - 1)
             : Math.trunc(Number(saved?.index) || 0);
           const doc = source.preface && saved?.omitPreface ? bookWithoutPreface(source) : source;
           engine.load(
@@ -2651,9 +2811,9 @@
           $("bookTitle").textContent = doc.title;
           $("bookTitle").title = doc.title;
           $("bookMeta").textContent =
-            ext.toUpperCase() +
+            (source.prepared ? "Hazır metin" : ext.toUpperCase()) +
             " · " +
-            (ext === "pdf"
+            (doc.type === "pdf"
               ? doc.sections.length + " sayfa"
               : doc.sections.length + " bölüm") +
             " · " +
@@ -2697,6 +2857,7 @@
         document.body.classList.toggle("focus", on);
         $("focusExit").hidden = !on;
         $("focusToggle").setAttribute("aria-pressed", on);
+        if (!on) renderTrail();
         closePanels();
       }
       function togglePlay() {
@@ -2837,6 +2998,8 @@
       });
       window.addEventListener("resize", fitWord);
       new ResizeObserver(fitWord).observe($("stage"));
+      new ResizeObserver(() => renderTrail()).observe($("trailCurrent"));
+      $("readingTrail").addEventListener("focusin", () => engine.pause());
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
           engine.pause();
@@ -2868,12 +3031,12 @@
         $("loadProgress").style.width = "2%";
         notify("Yerdeniz indiriliyor…");
         try {
-          const response = await fetch("./yerdeniz.pdf", { signal: request.signal });
-          if (!response.ok) throw new Error("PDF download failed");
+          const response = await fetch("./yerdeniz.okufast?v=1", { signal: request.signal });
+          if (!response.ok) throw new Error("Book download failed");
           const blob = await response.blob();
           if (startupRequest !== request) return;
           startupRequest = null;
-          await importFile(new File([blob], "Yerdeniz.pdf", { type: "application/pdf" }), { bundled: true });
+          await importFile(new File([blob], "Yerdeniz.okufast", { type: "application/json" }), { bundled: true });
           if (!engine.doc) await loadDemo();
         } catch {
           if (request.signal.aborted) return;
