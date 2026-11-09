@@ -514,6 +514,22 @@
       .progress-area {
         margin-top: 34px;
       }
+      .bookmark-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px 10px;
+        margin-top: 12px;
+      }
+      .bookmark-bar button {
+        min-height: 44px;
+        padding: 8px 10px;
+        border: 1px solid var(--control-line);
+        border-radius: 6px;
+      }
+      .bookmark-bar button:hover { background: var(--soft); }
+      .bookmark-bar button:first-child { display: inline-flex; align-items: center; gap: 6px; }
+      .bookmark-info { flex-basis: 100%; color: var(--muted); font-size: 12px; line-height: 1.5; }
       .progress-caption,
       .progress-detail {
         display: flex;
@@ -1357,6 +1373,15 @@
             >
               <svg><use href="#i-focus" /></svg><span>Odak modu</span>
             </button>
+          </div>
+          <div class="bookmark-bar" aria-label="Kitap ayracı">
+            <button id="saveBookmark" title="Bulunduğun sayfa ve kelimeyi sakla" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4V3Z" /></svg>
+              Kitap ayracı
+            </button>
+            <button id="goBookmark" hidden>Ayraca dön</button>
+            <button id="removeBookmark" aria-label="Kitap ayracını kaldır" hidden>Kaldır</button>
+            <span class="bookmark-info" id="bookmarkInfo">Bir kitap açarak ayraç ekleyebilirsin.</span>
           </div>
           <div class="progress-area">
             <div class="progress-caption">
@@ -2395,6 +2420,7 @@
       };
       let currentKey = null,
         currentSourceDoc = null,
+        currentBookmark = null,
         view = "rsvp",
         panelOpener = null,
         lastSave = 0,
@@ -2420,6 +2446,89 @@
             omitPreface: engine.doc.prefaceOmitted === true,
             revision: currentSourceDoc.revision || null,
           });
+        }
+      }
+      function readBookmark(key) {
+        try {
+          const mark = JSON.parse(localStorage.getItem("okufast.bookmark." + key) || "null");
+          return mark && Number.isSafeInteger(mark.index) && mark.index >= 0 &&
+            Number.isSafeInteger(mark.section) && mark.section >= 0 &&
+            Number.isSafeInteger(mark.offset) && mark.offset >= 0 ? mark : null;
+        } catch { return null; }
+      }
+      function restoredIndex(source, saved) {
+        let savedSection = saved?.section, savedOffset = saved?.offset;
+        if (source.prepared && saved && saved.revision !== source.revision && source.legacyMap) {
+          if (!Number.isInteger(savedSection) && Number.isInteger(saved.index) && source.legacyStarts) {
+            savedSection = source.legacyStarts.findLastIndex(n => n <= saved.index);
+            savedOffset = saved.index - source.legacyStarts[savedSection];
+          }
+          const map = source.legacyMap[savedSection];
+          if (Array.isArray(map) && Number.isInteger(savedOffset)) {
+            const mapped = map[clamp(savedOffset, 0, map.length - 1)];
+            if (Number.isInteger(mapped)) savedOffset = mapped;
+          }
+        }
+        const section = Number.isInteger(savedSection) && source.sections[savedSection];
+        const index = section && section.end > section.start && Number.isInteger(savedOffset)
+          ? clamp(section.start + savedOffset, section.start, section.end - 1)
+          : Math.trunc(Number(saved?.index) || 0);
+        return clamp(index, 0, source.tokens.length - 1);
+      }
+      function bookmarkLabel() {
+        const index = restoredIndex(currentSourceDoc, currentBookmark);
+        const section = currentSourceDoc.tokens[index].section;
+        return currentSourceDoc.sections[section].title + " · " +
+          (index - currentSourceDoc.sections[section].start + 1).toLocaleString("tr") + ". kelime";
+      }
+      function renderBookmark() {
+        const available = !!currentKey && !!currentSourceDoc && !!engine.doc;
+        const busy = engine.state === "LOADING";
+        $("saveBookmark").disabled = !available || busy;
+        $("goBookmark").hidden = $("removeBookmark").hidden = !available || !currentBookmark;
+        $("goBookmark").disabled = $("removeBookmark").disabled = busy;
+        $("saveBookmark").lastChild.textContent = currentBookmark ? " Ayracı güncelle" : " Kitap ayracı";
+        $("bookmarkInfo").textContent = !available ? "Bir kitap açarak ayraç ekleyebilirsin."
+          : currentBookmark ? bookmarkLabel() + ". Kitap yeniden açıldığında buradan devam eder."
+          : "Bulunduğun yeri kaydet; istediğinde buraya dön.";
+      }
+      function saveBookmark() {
+        if (!currentKey || !currentSourceDoc || !engine.doc || importing || engine.state === "LOADING") return;
+        engine.pause();
+        const { section, sourceIndex } = engine.doc.tokens[engine.index];
+        const mark = { index: sourceIndex, section,
+          offset: sourceIndex - currentSourceDoc.sections[section].start,
+          revision: currentSourceDoc.revision || null,
+          omitPreface: engine.doc.prefaceOmitted === true };
+        try {
+          localStorage.setItem("okufast.bookmark." + currentKey, JSON.stringify(mark));
+          currentBookmark = mark;
+          savePosition();
+          renderBookmark();
+          notify("Kitap ayracı kaydedildi: " + bookmarkLabel() + ".");
+        } catch {
+          notify("Ayraç kaydedilemedi. Tarayıcının site verilerini saklamaya izin verdiğini kontrol et.", true);
+        }
+      }
+      function goToBookmark() {
+        if (!currentBookmark || !currentSourceDoc || importing || engine.state === "LOADING") return;
+        const index = restoredIndex(currentSourceDoc, currentBookmark);
+        const doc = currentSourceDoc.preface && currentBookmark.omitPreface
+          ? bookWithoutPreface(currentSourceDoc) : currentSourceDoc;
+        engine.load(doc, positionInBook(doc, index), engine.time());
+        savePosition();
+        notify("Kitap ayracına dönüldü: " + bookmarkLabel() + ".");
+      }
+      function removeBookmark() {
+        if (!currentKey || !currentBookmark || importing || engine.state === "LOADING") return;
+        try {
+          localStorage.removeItem("okufast.bookmark." + currentKey);
+          currentBookmark = null;
+          renderBookmark();
+          savePosition();
+          notify("Kitap ayracı kaldırıldı. Son okuma konumun otomatik kaydedilmeye devam eder.");
+        } catch {
+          notify("Ayraç kaldırılamadı. Tarayıcının site verisi ayarlarını kontrol et.", true);
         }
       }
       function renderState(state) {
@@ -2449,6 +2558,7 @@
         $("accessibleStatus").textContent = $("stateText").textContent;
         for (const id of ["play", "back", "forward", "seek", "sectionsToggle"])
           $(id).disabled = state === "LOADING" || !engine.doc;
+        renderBookmark();
       }
       function renderWord() {
         if (!engine.doc) return;
@@ -2788,21 +2898,10 @@
           currentKey = key;
           currentSourceDoc = source;
           const saved = SettingsManager.position(key);
-          let savedSection = saved?.section, savedOffset = saved?.offset;
-          if (source.prepared && saved && saved.revision !== source.revision && source.legacyMap) {
-            if (!Number.isInteger(savedSection) && Number.isInteger(saved.index) && source.legacyStarts) {
-              savedSection = source.legacyStarts.findLastIndex(n => n <= saved.index);
-              savedOffset = saved.index - source.legacyStarts[savedSection];
-            }
-            const map = source.legacyMap[savedSection];
-            if (Array.isArray(map) && Number.isInteger(savedOffset))
-              savedOffset = map[clamp(savedOffset, 0, map.length - 1)] ?? 0;
-          }
-          const section = Number.isInteger(savedSection) && source.sections[savedSection];
-          const index = section && section.end > section.start && Number.isInteger(savedOffset)
-            ? clamp(section.start + savedOffset, section.start, section.end - 1)
-            : Math.trunc(Number(saved?.index) || 0);
-          const doc = source.preface && saved?.omitPreface ? bookWithoutPreface(source) : source;
+          currentBookmark = readBookmark(key);
+          const resume = currentBookmark || saved;
+          const index = restoredIndex(source, resume);
+          const doc = source.preface && resume?.omitPreface ? bookWithoutPreface(source) : source;
           engine.load(
             doc,
             positionInBook(doc, index),
@@ -2831,7 +2930,7 @@
               ? `${source.review.length} sayfa için Metin görünümünde kontrol önerilir.`
               : "",
             source.preface && !doc.prefaceOmitted ? "Önsözü bölüm menüsünden çıkarabilirsin." : "",
-            index > 0 ? "Kaldığın yerden devam edebilirsin." : "",
+            currentBookmark ? "Kitap ayracından devam edebilirsin." : index > 0 ? "Kaldığın yerden devam edebilirsin." : "",
           ].filter(Boolean).join(" "));
           savePosition();
         } catch (e) {
@@ -2882,6 +2981,9 @@
       $("play").onclick = togglePlay;
       $("back").onclick = () => engine.seek(engine.index - 10);
       $("forward").onclick = () => engine.seek(engine.index + 10);
+      $("saveBookmark").onclick = saveBookmark;
+      $("goBookmark").onclick = goToBookmark;
+      $("removeBookmark").onclick = removeBookmark;
       $("seek").oninput = (e) => engine.seek(Number(e.target.value));
       $("wpm").onchange = (e) => changeWpm(e.target.value);
       $("slower").onclick = () => changeWpm(settings.wpm - 25);
