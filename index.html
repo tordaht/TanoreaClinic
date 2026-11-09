@@ -1374,6 +1374,10 @@
               <svg><use href="#i-focus" /></svg><span>Odak modu</span>
             </button>
           </div>
+          <nav class="bookmark-bar" aria-label="Cümleler arasında gezinme">
+            <button id="previousSentence" title="Önceki cümle ([)">← Önceki cümle</button>
+            <button id="nextSentence" title="Sonraki cümle (])">Sonraki cümle →</button>
+          </nav>
           <div class="bookmark-bar" aria-label="Kitap ayracı">
             <button id="saveBookmark" title="Bulunduğun sayfa ve kelimeyi sakla" disabled>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4V3Z" /></svg>
@@ -1424,7 +1428,9 @@
         <div class="shortcuts">
           <span><kbd>Space</kbd> başlat / duraklat</span
           ><span><kbd>←</kbd><kbd>→</kbd> 10 kelime</span
-          ><span><kbd>F</kbd> odaklan</span>
+          ><span><kbd>[</kbd><kbd>]</kbd> cümle</span>
+          <span><kbd>↑</kbd><kbd>↓</kbd> hız</span>
+          <span><kbd>F</kbd> odaklan</span>
         </div>
         <div class="privacy">
           <svg><use href="#i-lock" /></svg>Kitabın yalnızca bu tarayıcıda.
@@ -1473,6 +1479,39 @@
           Mola süresi <output id="pauseValue" for="pauseScale">%100</output>
         </label>
         <input id="pauseScale" type="range" min="50" max="150" step="25" value="100" aria-describedby="pauseHelp" />
+      </div>
+      <div class="setting">
+        <label for="softStart">Yumuşak başlangıç<input id="softStart" type="checkbox" /></label>
+        <p>İlk 8 kelimede, devam ederken ilk 4 kelimede yavaş başlayıp seçtiğin hıza ulaşır.</p>
+      </div>
+      <div class="setting">
+        <label for="pauseRewind">Duraklatınca geri sar<select id="pauseRewind">
+          <option value="off">Kapalı</option>
+          <option value="auto">Hıza göre 3–10 kelime</option>
+          <option value="sentence">Cümlenin başına</option>
+        </select></label>
+        <p>Başlat / duraklat düğmesinde çalışır. Kitap ayracı her zaman seçtiğin kelimeyi kaydeder.</p>
+      </div>
+      <div class="setting">
+        <label for="chunkSize">Birlikte gösterilen kelime<select id="chunkSize">
+          <option value="1">1 kelime</option>
+          <option value="2">2 kelime · deneysel</option>
+          <option value="3">3 kelime · deneysel</option>
+        </select></label>
+        <p>Gruplar noktalama, paragraf ve sayfa sınırlarında kısalır. Süre, gruptaki kelimelerin toplamıdır.</p>
+      </div>
+      <div class="setting">
+        <label for="syllableTiming">Türkçe hece ritmi<input id="syllableTiming" type="checkbox" aria-describedby="syllableHelp" /></label>
+        <p id="syllableHelp">Akıllı ritimde, çok heceli kelimelere ek süre ayırır. Hece sayısı sesli harflerden yaklaşık hesaplanır.</p>
+      </div>
+      <div class="setting">
+        <label for="paragraphPause">Paragraf molası<select id="paragraphPause">
+          <option value="0">Ek mola yok</option>
+          <option value="0.65">Standart · 0,65 vuruş</option>
+          <option value="1.5">Uzun · 1,5 vuruş</option>
+          <option value="2">Daha uzun · 2 vuruş</option>
+        </select></label>
+        <p>Akıllı ritimde geçerlidir. Noktalama molasıyla çakışırsa daha uzun olan uygulanır.</p>
       </div>
       <div class="setting">
         <label for="guides"
@@ -1553,6 +1592,11 @@
         smart: true,
         punctuation: true,
         pauseScale: 100,
+        softStart: false,
+        pauseRewind: "off",
+        chunkSize: 1,
+        syllableTiming: false,
+        paragraphPause: 0.65,
         guides: true,
         accent: null,
       };
@@ -1589,6 +1633,11 @@
       let settings = SettingsManager.load();
       settings.wpm = clamp(Number(settings.wpm) || 300, 100, 1000);
       settings.size = clamp(Number(settings.size) || 72, 36, 96);
+      settings.chunkSize = [1, 2, 3].includes(Number(settings.chunkSize)) ? Number(settings.chunkSize) : 1;
+      settings.paragraphPause = [0, 0.65, 1.5, 2].includes(Number(settings.paragraphPause)) ? Number(settings.paragraphPause) : 0.65;
+      if (!["off", "auto", "sentence"].includes(settings.pauseRewind)) settings.pauseRewind = "off";
+      settings.softStart = settings.softStart === true;
+      settings.syllableTiming = settings.syllableTiming === true;
       settings.pauseScale = clamp(
         Math.round((Number(settings.pauseScale) || DEFAULTS.pauseScale) / 25) * 25,
         50,
@@ -1665,6 +1714,7 @@
                   ? "medium"
                   : "none";
             t.numeric = /\p{N}/u.test(core);
+            t.syllables = (core.match(/[aeıiİoöuüâîû]/giu) || []).length;
             return t;
           });
         },
@@ -1676,12 +1726,13 @@
             ? Math.max(
                 t.orp.length >= 12 ? 1.35 : t.orp.length >= 8 ? 1.2 : 1,
                 t.numeric ? 1.25 : 1,
+                s.syllableTiming ? Math.min(1.8, 1 + Math.max(0, (t.syllables || 0) - 3) * 0.08) : 1,
               )
             : 1;
           const punctuation = s.punctuation
             ? punctuationBeats[t.punctuation] * ((s.pauseScale ?? DEFAULTS.pauseScale) / 100)
             : 0;
-          const paragraph = s.smart && t.paragraphBreak ? 0.65 : 0;
+          const paragraph = s.smart && t.paragraphBreak ? (s.paragraphPause ?? 0.65) : 0;
           return base + Math.max(punctuation, paragraph);
         },
         delay(t, s) {
@@ -1721,16 +1772,71 @@
               this.weights[i + 1] +
               TimingEngine.weight(this.doc.tokens[i], settings);
         }
+        frameEnd(start = this.index) {
+          if (!this.doc) return start;
+          const tokens = this.doc.tokens;
+          let end = start + 1;
+          while (end < tokens.length && end - start < settings.chunkSize) {
+            const previous = tokens[end - 1];
+            if (previous.punctuation !== "none" || previous.paragraphBreak || previous.section !== tokens[end].section) break;
+            end++;
+          }
+          return end;
+        }
+        frameParts() {
+          const tokens = this.doc.tokens, end = this.frameEnd();
+          const middle = this.index + Math.floor((end - this.index - 1) / 2);
+          const parts = tokens[middle].orp;
+          const before = tokens.slice(this.index, middle).map(t => t.text).join(" ");
+          const after = tokens.slice(middle + 1, end).map(t => t.text).join(" ");
+          return { left: (before ? before + " " : "") + parts.left,
+            pivot: parts.pivot, right: parts.right + (after ? " " + after : "") };
+        }
+        rampFactor(index, start = this.rampStart, length = this.rampLength) {
+          if (!settings.softStart || !length || index < start || index >= start + length) return 1;
+          return 1 + Math.pow(1 - (index - start) / (length - 1), 2);
+        }
+        frameDelay() {
+          let delay = 0;
+          for (let i = this.index; i < this.frameEnd(); i++)
+            delay += TimingEngine.delay(this.doc.tokens[i], settings) * this.rampFactor(i);
+          return delay;
+        }
+        sentenceStart(index = this.index) {
+          const tokens = this.doc?.tokens;
+          if (!tokens) return 0;
+          while (index > 0) {
+            const previous = tokens[index - 1];
+            if (previous.punctuation === "sentence" || previous.paragraphBreak || previous.section !== tokens[index].section) break;
+            index--;
+          }
+          return index;
+        }
+        sentenceIndex(direction) {
+          if (!this.doc) return 0;
+          if (direction < 0) {
+            const start = this.sentenceStart();
+            return start === this.index && start > 0 ? this.sentenceStart(start - 1) : start;
+          }
+          const tokens = this.doc.tokens;
+          for (let i = this.index + 1; i < tokens.length; i++) {
+            const previous = tokens[i - 1];
+            if (previous.punctuation === "sentence" || previous.paragraphBreak || previous.section !== tokens[i].section) return i;
+          }
+          return tokens.length - 1;
+        }
         play() {
           if (!this.doc || this.state === "LOADING" || this.state === "PLAYING")
             return;
           if (this.state === "FINISHED") this.index = 0;
+          this.rampStart = this.index;
+          this.rampLength = this.index === 0 ? 8 : 4;
           this.sessionStart = performance.now();
           this.setState("PLAYING");
           this.onWord();
           this.target =
             performance.now() +
-            TimingEngine.delay(this.doc.tokens[this.index], settings);
+            this.frameDelay();
           this.schedule();
         }
         schedule() {
@@ -1747,19 +1853,18 @@
             this.schedule();
             return;
           }
-          if (this.index >= this.doc.tokens.length - 1) {
+          const next = this.frameEnd();
+          if (next >= this.doc.tokens.length) {
             this.pause();
+            this.index = this.doc.tokens.length - 1;
             this.setState("FINISHED");
             this.onWord();
             savePosition();
             return;
           }
-          this.index++;
+          this.index = next;
           this.onWord();
-          const delay = TimingEngine.delay(
-            this.doc.tokens[this.index],
-            settings,
-          );
+          const delay = this.frameDelay();
           this.target += delay;
           // Recover small scheduler drift; after a long stall keep the word readable instead of skipping a burst.
           if (now - this.target > delay) this.target = now + delay;
@@ -1792,7 +1897,13 @@
         }
         remaining() {
           if (this.state === "FINISHED") return 0;
-          return ((this.weights[this.index] || 0) * 60000) / settings.wpm;
+          let extra = 0;
+          const start = this.state === "PLAYING" ? this.rampStart : this.index;
+          const length = this.state === "PLAYING" ? this.rampLength : this.index === 0 ? 8 : 4;
+          if (settings.softStart && this.doc)
+            for (let i = this.index; i < Math.min(this.doc.tokens.length, start + length); i++)
+              extra += TimingEngine.weight(this.doc.tokens[i], settings) * (this.rampFactor(i, start, length) - 1);
+          return (((this.weights[this.index] || 0) + extra) * 60000) / settings.wpm;
         }
       }
       // Conservative coordinate reconstruction: rows, gap-based two-column detection and explicit soft-hyphen repair.
@@ -2556,14 +2667,14 @@
           ERROR: "Dosya açılamadı",
         }[state];
         $("accessibleStatus").textContent = $("stateText").textContent;
-        for (const id of ["play", "back", "forward", "seek", "sectionsToggle"])
+        for (const id of ["play", "back", "forward", "previousSentence", "nextSentence", "seek", "sectionsToggle"])
           $(id).disabled = state === "LOADING" || !engine.doc;
         renderBookmark();
       }
       function renderWord() {
         if (!engine.doc) return;
         const token = engine.doc.tokens[engine.index];
-        const { left, pivot, right } = token.orp;
+        const { left, pivot, right } = engine.frameParts();
         $("wordLeft").textContent = left;
         $("wordPivot").textContent = pivot;
         $("wordRight").textContent = right;
@@ -2599,7 +2710,7 @@
         if (!engine.doc || $("stage").hidden) return;
         const width = $("stage").clientWidth;
         if (!width) return;
-        const parts = engine.doc.tokens[engine.index].orp;
+        const parts = engine.frameParts();
         const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
         const base = settings.size * (rem / 16);
         measure.font = base + "px " + getComputedStyle($("word")).fontFamily;
@@ -2783,9 +2894,11 @@
         root.style.setProperty("--word-accent", accent);
         document.body.classList.toggle("no-guides", !settings.guides);
         $("wpm").value = settings.wpm;
-        for (const id of ["font", "size", "pauseScale"]) $(id).value = settings[id];
-        for (const id of ["smart", "punctuation", "guides"])
+        for (const id of ["font", "size", "pauseScale", "pauseRewind", "chunkSize", "paragraphPause"]) $(id).value = settings[id];
+        for (const id of ["smart", "punctuation", "guides", "softStart", "syllableTiming"])
           $(id).checked = settings[id];
+        $("syllableTiming").disabled = !settings.smart;
+        $("paragraphPause").disabled = !settings.smart;
         $("sizeValue").textContent = settings.size + " px";
         $("pauseScale").disabled = !settings.punctuation;
         $("pauseScale").setAttribute("aria-valuetext", "Yüzde " + settings.pauseScale);
@@ -2963,6 +3076,10 @@
         if (importing) return;
         if (engine.state === "PLAYING") {
           engine.pause();
+          if (settings.pauseRewind === "auto")
+            engine.seek(engine.index - Math.max(3, Math.floor(settings.wpm / 100)));
+          else if (settings.pauseRewind === "sentence")
+            engine.seek(engine.sentenceStart());
           savePosition();
         } else {
           closePanels();
@@ -2981,6 +3098,8 @@
       $("play").onclick = togglePlay;
       $("back").onclick = () => engine.seek(engine.index - 10);
       $("forward").onclick = () => engine.seek(engine.index + 10);
+      $("previousSentence").onclick = () => engine.seek(engine.sentenceIndex(-1));
+      $("nextSentence").onclick = () => engine.seek(engine.sentenceIndex(1));
       $("saveBookmark").onclick = saveBookmark;
       $("goBookmark").onclick = goToBookmark;
       $("removeBookmark").onclick = removeBookmark;
@@ -3029,21 +3148,28 @@
         "pauseScale",
         "guides",
         "accent",
+        "softStart",
+        "pauseRewind",
+        "chunkSize",
+        "syllableTiming",
+        "paragraphPause",
       ])
         $(id).oninput = () => {
           settings[id] =
             $(id).type === "checkbox"
               ? $(id).checked
-              : $(id).type === "range"
+              : $(id).type === "range" || id === "chunkSize" || id === "paragraphPause"
                 ? Number($(id).value)
                 : $(id).value;
           applySettings();
-          if (id === "smart" || id === "punctuation" || id === "pauseScale") {
+          if (["smart", "punctuation", "pauseScale", "syllableTiming", "paragraphPause", "softStart", "chunkSize"].includes(id)) {
+            engine.pause();
             engine.reweight();
             renderWord();
           }
         };
       $("resetSettings").onclick = () => {
+        engine.pause();
         settings = { ...DEFAULTS };
         applySettings();
         engine.reweight();
@@ -3073,6 +3199,14 @@
             engine.index +
               (e.key === "ArrowLeft" ? -1 : 1) * (e.shiftKey ? 50 : 10),
           );
+        } else if (e.key === "[" || e.key === "]") {
+          if (!$("settingsPanel").hidden || !$("sectionsPanel").hidden) return;
+          e.preventDefault();
+          engine.seek(engine.sentenceIndex(e.key === "[" ? -1 : 1));
+        } else if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+          if (!$("settingsPanel").hidden || !$("sectionsPanel").hidden) return;
+          e.preventDefault();
+          changeWpm(settings.wpm + (e.key === "ArrowUp" ? 25 : -25));
         } else if (e.key.toLowerCase() === "f") toggleFocus();
       });
       let dragDepth = 0;
